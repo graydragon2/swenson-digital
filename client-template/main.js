@@ -55,11 +55,33 @@
     });
   }
 
-  // Hide/show social links based on whether a CONFIG.social value is set
+  // Hide/show social links based on whether a CONFIG.social value is set.
+  // Any wrapper with [data-social-group] (e.g. the "Follow along" row on the
+  // Home hero) hides itself too when none of its links have a URL, so there's
+  // no orphaned label with no icons next to it.
   function bindSocialLinks() {
     document.querySelectorAll('[data-social]').forEach((el) => {
       const key = el.getAttribute('data-social');
       const url = CONFIG.social[key];
+      if (!url) {
+        el.hidden = true;
+      } else {
+        el.href = url;
+        el.hidden = false;
+      }
+    });
+
+    document.querySelectorAll('[data-social-group]').forEach((group) => {
+      const anyVisible = Array.from(group.querySelectorAll('[data-social]')).some((el) => !el.hidden);
+      group.hidden = !anyVisible;
+    });
+  }
+
+  // Hide/show "leave us a review" links based on CONFIG.reviewLinks
+  function bindReviewLinks() {
+    document.querySelectorAll('[data-review-link]').forEach((el) => {
+      const key = el.getAttribute('data-review-link');
+      const url = CONFIG.reviewLinks && CONFIG.reviewLinks[key];
       if (!url) {
         el.hidden = true;
       } else {
@@ -112,6 +134,23 @@
           <cite>${escapeHtml(t.author)}${t.source ? ` &middot; ${escapeHtml(t.source)}` : ''}</cite>
         </blockquote>`
         )
+        .join('');
+    });
+  }
+
+  // Renders CONFIG.gallery into any element with [data-render="gallery"].
+  // Hides the whole section (via [data-gallery-section]) when the array is
+  // empty, so a client that doesn't need a gallery just gets nothing here.
+  function renderGallery() {
+    document.querySelectorAll('[data-render="gallery"]').forEach((container) => {
+      const items = CONFIG.gallery || [];
+      const section = container.closest('[data-gallery-section]');
+      if (items.length === 0) {
+        if (section) section.hidden = true;
+        return;
+      }
+      container.innerHTML = items
+        .map((photo) => `<img src="${escapeHtml(photo.src)}" alt="${escapeHtml(photo.alt)}" loading="lazy">`)
         .join('');
     });
   }
@@ -179,9 +218,11 @@
     applyTheme();
     bindStaticFields();
     bindSocialLinks();
+    bindReviewLinks();
     renderServices();
     renderHours();
     renderTestimonials();
+    renderGallery();
     renderMap();
     renderAddressLines();
     bindBuiltByCredit();

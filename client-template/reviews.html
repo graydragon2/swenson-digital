@@ -12,6 +12,31 @@
 <meta property="og:title" content="Reviews | [Business Name]">
 <meta property="og:description" content="What customers are saying about [Business Name] in [City], GA.">
 <meta property="og:url" content="https://www.example.com/reviews.html">
+<link rel="canonical" href="https://www.example.com/reviews.html">
+
+<!-- Placeholder favicon — replace favicon.svg with the client's real logo/mark -->
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+<!-- LocalBusiness structured data — keep in sync with config.js; see index.html -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "[Business Name]",
+  "description": "[One or two sentences describing the business.]",
+  "url": "https://www.example.com/",
+  "telephone": "[Phone, e.g. +1XXXXXXXXXX]",
+  "email": "owner@example.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "123 Main Street",
+    "addressLocality": "[City]",
+    "addressRegion": "GA",
+    "postalCode": "[ZIP]",
+    "addressCountry": "US"
+  }
+}
+</script>
 
 <link rel="stylesheet" href="style.css">
 </head>
@@ -58,7 +83,12 @@
     <div class="wrap">
       <h2>Had a good experience?</h2>
       <p class="section-sub" style="margin-left:auto;margin-right:auto;">We'd appreciate a review — it helps other folks find us.</p>
-      <a href="contact.html" class="btn btn-primary">Get in touch</a>
+      <div class="hero-actions" style="justify-content: center;">
+        <!-- Hidden automatically until CONFIG.reviewLinks has a real URL -->
+        <a data-review-link="google" href="#" target="_blank" rel="noopener" class="btn btn-primary" hidden>Leave a Google Review</a>
+        <a data-review-link="facebook" href="#" target="_blank" rel="noopener" class="btn btn-outline" hidden>Leave a Facebook Review</a>
+        <a href="contact.html" class="btn btn-outline">Get in touch</a>
+      </div>
     </div>
   </section>
 

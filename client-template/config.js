@@ -82,6 +82,15 @@ const CONFIG = {
     instagram: "",
   },
 
+  // ---- Review links -------------------------------------------------------
+  // Direct links to leave a review — used for the "Leave us a review" button
+  // on reviews.html. Get the Google one from the business's Google Business
+  // Profile ("Ask for reviews" gives a shareable link). Leave "" to hide.
+  reviewLinks: {
+    google: "",
+    facebook: "",
+  },
+
   // ---- Hero (Home page) -----------------------------------------------------
   hero: {
     heading: "[Hero headline — what the business does, in plain language]",
@@ -118,6 +127,20 @@ const CONFIG = {
     photo: "images/placeholder-wide.svg",
     photoAlt: "[Placeholder — replace with a photo of the owner or team]",
   },
+
+  // ---- Photo gallery (optional) ------------------------------------------
+  // Shown on about.html. Good for restaurants, contractors, auto shops, salons
+  // — anywhere "show me the work" sells better than paragraphs. Not every
+  // business needs this: delete entries down to an empty array ([]) and the
+  // gallery section hides itself automatically, or remove the section from
+  // about.html entirely for a client who doesn't need it (e.g. most
+  // professional-services or church sites).
+  gallery: [
+    { src: "images/placeholder-wide.svg", alt: "[Placeholder — replace with a real photo]" },
+    { src: "images/placeholder-wide.svg", alt: "[Placeholder — replace with a real photo]" },
+    { src: "images/placeholder-wide.svg", alt: "[Placeholder — replace with a real photo]" },
+    { src: "images/placeholder-wide.svg", alt: "[Placeholder — replace with a real photo]" },
+  ],
 
   // ---- Testimonials / Reviews ---------------------------------------------
   // First 2 show as a preview on the Home page; all of them show on

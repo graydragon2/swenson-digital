@@ -12,6 +12,31 @@
 <meta property="og:title" content="About | [Business Name]">
 <meta property="og:description" content="[Same or similar description as above.]">
 <meta property="og:url" content="https://www.example.com/about.html">
+<link rel="canonical" href="https://www.example.com/about.html">
+
+<!-- Placeholder favicon — replace favicon.svg with the client's real logo/mark -->
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+<!-- LocalBusiness structured data — keep in sync with config.js; see index.html -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "[Business Name]",
+  "description": "[One or two sentences describing the business.]",
+  "url": "https://www.example.com/",
+  "telephone": "[Phone, e.g. +1XXXXXXXXXX]",
+  "email": "owner@example.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "123 Main Street",
+    "addressLocality": "[City]",
+    "addressRegion": "GA",
+    "postalCode": "[ZIP]",
+    "addressCountry": "US"
+  }
+}
+</script>
 
 <link rel="stylesheet" href="style.css">
 </head>
@@ -48,6 +73,19 @@
         <p data-cfg="about.body">[A few sentences about the business — how it started, who runs it, what makes it different.]</p>
         <a href="contact.html" class="btn btn-primary">Get in touch</a>
       </div>
+    </div>
+  </section>
+
+  <!--
+    Optional photo gallery — driven by CONFIG.gallery in config.js. Good for
+    restaurants, contractors, auto shops, salons ("show me the work"). If this
+    client doesn't need it, delete this whole <section> and remove CONFIG.gallery,
+    or just leave CONFIG.gallery as an empty array ([]) and it hides itself.
+  -->
+  <section style="background: var(--surface);" data-gallery-section>
+    <div class="wrap">
+      <h2>Photos</h2>
+      <div class="gallery-grid" data-render="gallery"></div>
     </div>
   </section>
 
