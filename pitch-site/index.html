@@ -10,12 +10,36 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Live Oak Digital — Websites & Social Media for Wayne County, GA Small Businesses">
 <meta property="og:description" content="Your business belongs online. I'll put it there — and keep it there. Serving small businesses in Wayne County, GA and the surrounding area.">
-<!-- TODO: swap in a real og:image (1200x630) once you have a logo/photo, and set og:url to your live domain -->
+<!-- TODO: swap in a real og:image (1200x630) once you have a logo/photo, and confirm og:url once the domain is final -->
 <meta property="og:url" content="https://www.liveoakdigital.co/">
+<link rel="canonical" href="https://www.liveoakdigital.co/">
+
+<!--
+  Organization/local-business structured data — helps Live Oak Digital's own
+  search visibility. No public storefront, so this uses areaServed instead
+  of a street address. Keep in sync with the footer/contact page by hand;
+  repeated on every page.
+-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Live Oak Digital",
+  "description": "Website and social media management for small businesses in Wayne County, GA and the surrounding area.",
+  "url": "https://www.liveoakdigital.co/",
+  "telephone": "[Phone, e.g. +1XXXXXXXXXX]",
+  "email": "hello@liveoakdigital.co",
+  "areaServed": {
+    "@type": "AdministrativeArea",
+    "name": "Wayne County, GA and surrounding areas"
+  }
+}
+</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -24,7 +48,7 @@
 
 <header class="site-header">
   <div class="wrap header-inner">
-    <a class="logo" href="#top">
+    <a class="logo" href="index.html">
       <svg class="logo-mark" width="28" height="28" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <path d="M20 3C13 10 8 16 8 23a12 12 0 0 0 24 0c0-7-5-13-12-20Z" fill="#1f3d2e"/>
         <path d="M20 22v15" stroke="#c1622d" stroke-width="2" stroke-linecap="round"/>
@@ -38,11 +62,12 @@
         <span class="sr-only">Menu</span>
       </button>
       <nav class="primary-nav" id="primaryNav">
-        <a href="#services">Services</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#process">How it works</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contact" class="nav-cta">Get a Free Site Review</a>
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="services.html">Services</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="about.html">About</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html" class="nav-cta">Get a Free Site Review</a>
       </nav>
     </div>
   </div>
@@ -51,7 +76,7 @@
 <main id="main">
 
   <!-- ============ HERO ============ -->
-  <section class="hero" id="top">
+  <section class="hero">
     <div class="wrap hero-inner">
       <div class="hero-copy">
         <p class="eyebrow">Serving Wayne County, GA &amp; Surrounding Areas</p>
@@ -59,9 +84,9 @@
         <p class="hero-sub">For small businesses in Wayne County, Georgia and the surrounding area with no website, an outdated one, or no real social media presence — I build it, host it, and keep it running so you don't have to think about it.</p>
         <div class="hero-actions">
           <a href="tel:+1XXXXXXXXXX" class="btn btn-primary">Call or Text (XXX) XXX-XXXX</a>
-          <a href="#contact" class="btn btn-ghost">Get a Free Site Review</a>
+          <a href="contact.html" class="btn btn-ghost">Get a Free Site Review</a>
         </div>
-        <p class="hero-actions-note">Prefer email or a form? <a href="#contact">Scroll to the contact form</a> instead. <span class="placeholder-tag inline">phone is a placeholder</span></p>
+        <p class="hero-actions-note">Prefer email or a form? <a href="contact.html">Head to the contact page</a> instead. <span class="placeholder-tag inline">phone is a placeholder</span></p>
       </div>
       <div class="hero-art" aria-hidden="true">
         <svg viewBox="0 0 480 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
@@ -111,8 +136,8 @@
     </div>
   </section>
 
-  <!-- ============ WHAT I DO ============ -->
-  <section class="services" id="services">
+  <!-- ============ SERVICES TEASER ============ -->
+  <section>
     <div class="wrap">
       <h2>What I do</h2>
       <p class="section-sub">Pick one, or let me handle both.</p>
@@ -123,7 +148,7 @@
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M3 12h18M12 3c2.5 2.6 4 5.7 4 9s-1.5 6.4-4 9c-2.5-2.6-4-5.7-4-9s1.5-6.4 4-9Z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/></svg>
           </span>
           <h3>Website</h3>
-          <p>Built, hosted, and kept updated — no CMS headaches for you. You call, text, or email when something needs to change, and I handle it.</p>
+          <p>Built, hosted, and kept updated — no CMS headaches for you.</p>
         </article>
 
         <article class="service-card">
@@ -131,7 +156,7 @@
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="4" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor"/></svg>
           </span>
           <h3>Social Media Management</h3>
-          <p>Regular posts and real photos from your business, so you show up consistently when people search and scroll — not just whenever you get a free minute.</p>
+          <p>Regular posts and real photos, so you show up consistently.</p>
         </article>
 
         <article class="service-card">
@@ -139,90 +164,16 @@
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M4 19V9l8-5 8 5v10" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 19v-7h6v7" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
           </span>
           <h3>Website + Social</h3>
-          <p>The "just handle it" package. Your website and your social media working together, looking like one business — because it is.</p>
+          <p>The "just handle it" package — one business, one look, everywhere.</p>
         </article>
 
       </div>
-
-      <!-- Show, don't just tell, what the social media service actually produces -->
-      <div class="social-mockup">
-        <p class="mockup-label">What a post from me actually looks like on your page:</p>
-        <div class="fb-post-mock">
-          <div class="fb-post-header">
-            <span class="fb-post-avatar" aria-hidden="true">YB</span>
-            <div>
-              <p class="fb-post-name">Your Business Name</p>
-              <p class="fb-post-meta">Yesterday at 4:12 PM &middot; Public</p>
-            </div>
-          </div>
-          <p class="fb-post-text">Fresh batch just came out of the oven! Stop by before we sell out today. 🍞</p>
-          <div class="fb-post-photo" aria-hidden="true">
-            <svg viewBox="0 0 200 100" preserveAspectRatio="none"><rect width="200" height="100" fill="#f0e6d2"/><path d="M0 80 60 40 100 65 140 30 200 70" stroke="#c9bb98" stroke-width="3" fill="none"/><circle cx="160" cy="24" r="10" fill="#e3d9c4"/></svg>
-          </div>
-          <div class="fb-post-actions">
-            <span>👍 Like</span><span>💬 Comment</span><span>↗ Share</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ PRICING ============ -->
-  <section class="pricing" id="pricing">
-    <div class="wrap">
-      <h2>Pricing</h2>
-      <p class="section-sub">Plain numbers, no hidden fees.</p>
-
-      <div class="pricing-grid">
-
-        <div class="price-card">
-          <h3>Website</h3>
-          <p class="price-line"><span class="price-amount">$500</span> one-time build</p>
-          <p class="price-line-sub">+ <strong>$35/mo</strong> hosting &amp; upkeep</p>
-          <ul class="price-features">
-            <li>Domain setup</li>
-            <li>Hosting &amp; security updates</li>
-            <li>Up to 2 small text/photo edits per month</li>
-          </ul>
-          <p class="price-note">No contract on the monthly piece — cancel anytime, the site is still yours.</p>
-          <a href="#contact" class="btn btn-outline">Get started</a>
-        </div>
-
-        <div class="price-card price-card-featured">
-          <p class="price-badge">Most businesses choose this</p>
-          <h3>Website + Social</h3>
-          <p class="price-line">
-            <span class="price-amount">$350</span> one-time build
-            <span class="price-was">save $150 off $500</span>
-          </p>
-          <p class="price-line-sub">+ <strong>$289/mo</strong> (hosting/upkeep + full social package)</p>
-          <ul class="price-features">
-            <li>Everything in Website</li>
-            <li>Everything in Social Media</li>
-            <li>One person, one bill, one less thing to manage</li>
-          </ul>
-          <p class="price-note">No contract on the monthly piece — cancel anytime.</p>
-          <a href="#contact" class="btn btn-primary">Get started</a>
-        </div>
-
-        <div class="price-card">
-          <h3>Social Media</h3>
-          <p class="price-line"><span class="price-amount">$275</span>/mo</p>
-          <ul class="price-features">
-            <li>12 posts/month across Facebook + Instagram</li>
-            <li>Built from your own photos</li>
-            <li>Simple monthly content calendar</li>
-          </ul>
-          <p class="price-note">No contract — cancel anytime. Organic posting only — doesn't include running paid ads.</p>
-          <a href="#contact" class="btn btn-outline">Get started</a>
-        </div>
-
-      </div>
+      <p style="margin-top: 1.5rem;"><a href="services.html">See how each one works &rarr;</a></p>
     </div>
   </section>
 
   <!-- ============ HOW IT WORKS ============ -->
-  <section class="process" id="process">
+  <section class="process">
     <div class="wrap">
       <h2>How it works</h2>
       <p class="section-sub">Low effort on your end. That's the whole point.</p>
@@ -235,7 +186,7 @@
         <li class="step-card">
           <span class="step-num">2</span>
           <h3>I build it</h3>
-          <p>Usually within <strong>[X business days — placeholder, tell me your real turnaround]</strong>. You don't have to do anything while I work.</p>
+          <p>Usually within <strong>3–5 business days</strong>. You don't have to do anything while I work.</p>
         </li>
         <li class="step-card">
           <span class="step-num">3</span>
@@ -283,88 +234,12 @@
     </div>
   </section>
 
-  <!-- ============ FAQ ============ -->
-  <section class="faq" id="faq">
+  <!-- ============ CTA BANNER ============ -->
+  <section class="cta-banner">
     <div class="wrap">
-      <h2>Questions people ask</h2>
-      <div class="faq-list">
-
-        <details class="faq-item">
-          <summary>I don't have good photos of my business.</summary>
-          <p>That's fine — I can shoot simple photos with my phone when I visit, or walk you through getting a few good ones yourself. You don't need a professional photographer to look legit online.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary>What if I want to make changes myself later?</summary>
-          <p>You can always just ask — small edits are included every month. If you want more hands-on control, I can also set things up so you can edit basic info yourself.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary>What if I already have a website?</summary>
-          <p>I can take over hosting and upkeep on your existing site, or rebuild it if it's outdated or hard to manage — whichever makes more sense for your business.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary>Will I show up when people search on Google or Google Maps?</summary>
-          <p>Setting up (or cleaning up) your free Google Business Profile is part of every website build — that's the listing that shows your business on Google Maps and in local search results, at no extra cost. I don't promise specific rankings or timelines — nobody honestly can — but I make sure the basics are done right.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary>Do I own my website and domain?</summary>
-          <p>Yes — always. The domain and the site are yours. If we ever part ways, they go with you, no questions asked.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary>Is there a contract?</summary>
-          <p>No long-term contract on the monthly services — cancel anytime. The one-time build fee is exactly that: one time, upfront, no surprises later.</p>
-        </details>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ CONTACT ============ -->
-  <section class="contact" id="contact">
-    <div class="wrap contact-inner">
-      <div class="contact-copy">
-        <h2>Get a free site review</h2>
-        <p>Tell me a little about your business and I'll get back to you — no obligation, no sales pressure.</p>
-        <p class="contact-direct">
-          <strong>Call or text:</strong> <a href="tel:+1XXXXXXXXXX">(XXX) XXX-XXXX</a> <span class="placeholder-tag inline">placeholder</span><br>
-          <strong>Email:</strong> <a href="mailto:hello@liveoakdigital.co">hello@liveoakdigital.co</a> <span class="placeholder-tag inline">placeholder</span>
-        </p>
-      </div>
-
-      <!--
-        FORM SETUP:
-        This form posts to Formspree (https://formspree.io) — a no-backend form service.
-        1. Create a free Formspree account and form.
-        2. Replace "YOUR_FORM_ID" in the action URL below with your real form ID.
-        Swap for any other form endpoint (Netlify Forms, Basin, etc.) the same way.
-      -->
-      <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-        <label for="name">Your name</label>
-        <input type="text" id="name" name="name" required>
-
-        <label for="business">Business name</label>
-        <input type="text" id="business" name="business" required>
-
-        <label for="phone">Phone number</label>
-        <input type="tel" id="phone" name="phone" required>
-
-        <label for="need">What do you need?</label>
-        <select id="need" name="need">
-          <option value="Website">Website</option>
-          <option value="Social Media">Social Media</option>
-          <option value="Both">Both</option>
-          <option value="Not sure yet">Not sure yet</option>
-        </select>
-
-        <label for="message">Anything else I should know? (optional)</label>
-        <textarea id="message" name="message" rows="4"></textarea>
-
-        <button type="submit" class="btn btn-primary btn-block">Send it over</button>
-      </form>
+      <h2>Ready to get started?</h2>
+      <p class="section-sub" style="margin-left:auto;margin-right:auto;">Get a free, no-pressure look at where your business stands online.</p>
+      <a href="contact.html" class="btn btn-primary">Get a Free Site Review</a>
     </div>
   </section>
 
@@ -372,12 +247,22 @@
 
 <footer class="site-footer">
   <div class="wrap footer-inner">
-    <p>&copy; <span id="year"></span> Live Oak Digital. Based in Wayne County, GA.</p>
-    <p class="footer-contact">
-      <a href="tel:+1XXXXXXXXXX">(XXX) XXX-XXXX</a> &middot;
-      <a href="mailto:hello@liveoakdigital.co">hello@liveoakdigital.co</a>
-      <span class="placeholder-tag inline">placeholder contact info</span>
-    </p>
+    <nav class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="about.html">About</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="footer-bottom-row">
+      <p>&copy; <span id="year"></span> Live Oak Digital. Based in Wayne County, GA.</p>
+      <p class="footer-contact">
+        <a href="tel:+1XXXXXXXXXX">(XXX) XXX-XXXX</a> &middot;
+        <a href="mailto:hello@liveoakdigital.co">hello@liveoakdigital.co</a>
+        <span class="placeholder-tag inline">placeholder contact info</span>
+      </p>
+    </div>
   </div>
 </footer>
 

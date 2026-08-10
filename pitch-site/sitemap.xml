@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TODO: confirm liveoakdigital.co is the final domain once it's registered -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://www.liveoakdigital.co/</loc>
+  </url>
+  <url>
+    <loc>https://www.liveoakdigital.co/services.html</loc>
+  </url>
+  <url>
+    <loc>https://www.liveoakdigital.co/pricing.html</loc>
+  </url>
+  <url>
+    <loc>https://www.liveoakdigital.co/about.html</loc>
+  </url>
+  <url>
+    <loc>https://www.liveoakdigital.co/faq.html</loc>
+  </url>
+  <url>
+    <loc>https://www.liveoakdigital.co/contact.html</loc>
+  </url>
+</urlset>

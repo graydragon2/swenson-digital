@@ -1,0 +1,7 @@
+# TODO: confirm liveoakdigital.co is the final domain once it's registered
+# (or swap this whole file for the real one).
+
+User-agent: *
+Allow: /
+
+Sitemap: https://www.liveoakdigital.co/sitemap.xml
