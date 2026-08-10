@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- SEO NOTE: keep in sync with config.js by hand — see index.html for why -->
+<title>[Services Label] | [Business Name]</title>
+<meta name="description" content="[List of services/menu items offered by Business Name in City, GA.]">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="[Services Label] | [Business Name]">
+<meta property="og:description" content="[Same or similar description as above.]">
+<meta property="og:url" content="https://www.example.com/services.html">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="index.html" data-cfg="business.name">[Business Name]</a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryNav">
+      <span></span><span></span><span></span>
+      <span class="sr-only">Menu</span>
+    </button>
+    <nav class="primary-nav" id="primaryNav">
+      <a href="index.html">Home</a>
+      <a href="services.html" aria-current="page" data-cfg="labels.servicesNav">Services</a>
+      <a href="about.html">About</a>
+      <a href="reviews.html">Reviews</a>
+      <a href="contact.html" class="nav-cta">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <div class="page-header">
+    <div class="wrap">
+      <h1 data-cfg="labels.servicesHeading">Our Services</h1>
+      <p class="section-sub" style="margin-left:auto;margin-right:auto;" data-cfg="business.description">[One or two sentences describing the business.]</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <!-- Full CONFIG.services list — no data-limit means "show everything" -->
+      <div class="card-grid cols-3" data-render="services"></div>
+    </div>
+  </section>
+
+  <section style="background: var(--surface); text-align: center;">
+    <div class="wrap">
+      <h2>Questions about pricing or availability?</h2>
+      <a href="contact.html" class="btn btn-primary">Get in touch</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h3 data-cfg="business.name">[Business Name]</h3>
+        <p data-render="address">[Address]</p>
+        <p><a data-cfg="contact.phoneDisplay" data-cfg-href="contact.phoneHref" href="tel:">[Phone]</a></p>
+        <p><a data-cfg="contact.email" data-cfg-href="contact.email" href="mailto:">[Email]</a></p>
+        <div class="footer-social">
+          <a data-social="facebook" href="#" aria-label="Facebook" hidden>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 8.5h2.5V5.2c-.4-.05-1.9-.2-3.6-.2-3.6 0-6 2.2-6 6.2v3.3H4.5V19h3.4v10h4.1V19h3.3l.5-4.5H12v-2.9c0-1.3.35-2.1 2.1-2.1Z" fill="currentColor"/></svg>
+          </a>
+          <a data-social="instagram" href="#" aria-label="Instagram" hidden>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h3>Hours</h3>
+        <ul class="hours-list" data-render="hours"></ul>
+      </div>
+      <div>
+        <h3>Quick Links</h3>
+        <p><a href="index.html">Home</a></p>
+        <p><a href="services.html" data-cfg="labels.servicesNav">Services</a></p>
+        <p><a href="about.html">About</a></p>
+        <p><a href="reviews.html">Reviews</a></p>
+        <p><a href="contact.html">Contact</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; <span id="year"></span> <span data-cfg="business.name">[Business Name]</span>. All rights reserved.</p>
+      <a data-built-by href="https://www.liveoakdigital.co">Website by Live Oak Digital</a>
+    </div>
+  </div>
+</footer>
+
+<script src="config.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

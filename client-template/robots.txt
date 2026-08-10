@@ -1,0 +1,8 @@
+# TODO: replace www.example.com below with the real live domain for this
+# client, matching CONFIG.seo.siteUrl in config.js. This file is read
+# directly by search engines and can't pull from config.js automatically.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://www.example.com/sitemap.xml
