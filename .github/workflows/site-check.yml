@@ -1,0 +1,41 @@
+name: Live site check
+
+# Catches the exact failure mode that happened once already: the deployment
+# silently serving the wrong content (client-template's placeholder page)
+# instead of the real pitch site, with nothing flagging it. Checks the live
+# URL on a schedule and fails the workflow (which GitHub emails to the repo
+# owner) if the site is down or showing placeholder/template content instead
+# of the real page.
+#
+# TODO: update SITE_URL below once a custom domain is attached — currently
+# points at the Cloudflare Workers preview URL.
+
+on:
+  schedule:
+    - cron: "17 13 * * *" # once a day, off the hour
+  workflow_dispatch: {}
+
+env:
+  SITE_URL: https://live-oak-digital.graydragon2.workers.dev/
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch the live site
+        run: |
+          curl -sS -f -o page.html "$SITE_URL"
+
+      - name: Confirm it's the real pitch site, not the placeholder template
+        run: |
+          if grep -q "Your business belongs online" page.html; then
+            echo "OK: real hero copy found."
+          else
+            echo "FAIL: expected hero copy not found — site may be showing placeholder/template content or something else entirely."
+            exit 1
+          fi
+
+          if grep -q "\[Business Name\]" page.html; then
+            echo "FAIL: found literal template placeholder text [Business Name] on the live site."
+            exit 1
+          fi

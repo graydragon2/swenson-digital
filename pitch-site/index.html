@@ -19,6 +19,9 @@
   search visibility. No public storefront, so this uses areaServed instead
   of a street address. Keep in sync with the footer/contact page by hand;
   repeated on every page.
+  TODO: add a "telephone" field back in once the real number is live —
+  intentionally omitted rather than left as a placeholder, since a fake
+  number here is invalid structured data Google could index.
 -->
 <script type="application/ld+json">
 {
@@ -27,7 +30,6 @@
   "name": "Live Oak Digital",
   "description": "Website and social media management for small businesses in Wayne County, GA and the surrounding area.",
   "url": "https://www.liveoakdigital.co/",
-  "telephone": "[Phone, e.g. +1XXXXXXXXXX]",
   "email": "hello@liveoakdigital.co",
   "areaServed": {
     "@type": "AdministrativeArea",
@@ -82,11 +84,19 @@
         <p class="eyebrow">Serving Wayne County, GA &amp; Surrounding Areas</p>
         <h1>Your business belongs online. I'll put it there — and keep it there.</h1>
         <p class="hero-sub">For small businesses in Wayne County, Georgia and the surrounding area with no website, an outdated one, or no real social media presence — I build it, host it, and keep it running so you don't have to think about it.</p>
+        <!--
+          NOTE: "Get a Free Site Review" is the primary CTA on purpose, even
+          though the original design called for the phone number to lead.
+          The phone number is still a placeholder — until it's real, the
+          working path (the contact form) should be the one people are
+          pushed toward. Swap these two back to Call/Text-primary once the
+          real number is live.
+        -->
         <div class="hero-actions">
-          <a href="tel:+1XXXXXXXXXX" class="btn btn-primary">Call or Text (XXX) XXX-XXXX</a>
-          <a href="contact.html" class="btn btn-ghost">Get a Free Site Review</a>
+          <a href="contact.html" class="btn btn-primary">Get a Free Site Review</a>
+          <a href="tel:+1XXXXXXXXXX" class="btn btn-ghost">Call or Text (XXX) XXX-XXXX</a>
         </div>
-        <p class="hero-actions-note">Prefer email or a form? <a href="contact.html">Head to the contact page</a> instead. <span class="placeholder-tag inline">phone is a placeholder</span></p>
+        <p class="hero-actions-note">Phone number above is a placeholder for now — <a href="contact.html">use the contact form</a> and I'll get back to you. <span class="placeholder-tag inline">phone is a placeholder</span></p>
       </div>
       <div class="hero-art" aria-hidden="true">
         <svg viewBox="0 0 480 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
