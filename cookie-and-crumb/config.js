@@ -78,10 +78,8 @@ const CONFIG = {
   hero: {
     heading: "We Make All Your Sweet Dreams Come True",
     subheading: "Gourmet, made-from-scratch cookies, sourdough, scones, and more — baked in small batches in Screven, GA.",
-    photo: "images/placeholder-wide.svg",
-    // TODO: replace with a real photo — they have plenty on Facebook (the
-    // purple Crumb Cruiser trailer is a great hero shot).
-    photoAlt: "[Placeholder — replace with a real photo of Cookie & Crumb's baked goods or the Crumb Cruiser cart]",
+    photo: "images/real/sourdough-boule.jpg",
+    photoAlt: "A freshly baked sourdough boule from Cookie & Crumb, golden and scored on top",
   },
 
   // ---- Menu ---------------------------------------------------------------
@@ -129,19 +127,16 @@ const CONFIG = {
     // Everything past that first sentence is a draft — ask her to fill in
     // her actual story (how she started, why baking, etc.) before this goes live.
     body: "Cookie & Crumb is a woman-owned cottage bakery in Screven, GA — run by a wife, mother, and teacher who bakes everything from scratch, in small batches, with real ingredients. [Draft — add her real story here: how Cookie & Crumb got started, what baking means to her, anything that makes this more than just a menu.]",
-    photo: "images/placeholder-wide.svg",
-    photoAlt: "[Placeholder — replace with a photo of the baker]",
+    photo: "images/real/crumb-cruiser-cart.jpg",
+    photoAlt: "The Crumb Cruiser, Cookie & Crumb's mobile treat cart, set up and open for business",
   },
 
   // ---- Photo gallery (optional) ------------------------------------------
-  // They have great photos already on Facebook (cookie sandwiches, the
-  // purple Crumb Cruiser trailer, seasonal menu boards) — worth pulling a
-  // handful over once you're building this for real.
   gallery: [
-    { src: "images/placeholder-wide.svg", alt: "[Placeholder — replace with a real photo]" },
-    { src: "images/placeholder-wide.svg", alt: "[Placeholder — replace with a real photo]" },
-    { src: "images/placeholder-wide.svg", alt: "[Placeholder — replace with a real photo]" },
-    { src: "images/placeholder-wide.svg", alt: "[Placeholder — replace with a real photo]" },
+    { src: "images/real/oatmeal-cream-pies.jpg", alt: "A batch of Cookie & Crumb's oatmeal cream pie cookie sandwiches" },
+    { src: "images/real/wc-cake-pops.jpg", alt: "Cookie & Crumb chocolate letter cake pops, decorated with gold detail" },
+    { src: "images/real/sourdough-boule.jpg", alt: "A freshly baked sourdough boule from Cookie & Crumb" },
+    { src: "images/real/crumb-cruiser-cart.jpg", alt: "The Crumb Cruiser mobile treat cart, open for business" },
   ],
 
   // ---- Testimonials / Reviews ---------------------------------------------
