@@ -1,0 +1,11 @@
+{
+  // Cloudflare Workers config for deploying Cookie & Crumb as static assets.
+  // This is a separate Cloudflare project from the Live Oak Digital pitch
+  // site — set "Root directory" to "cookie-and-crumb" when creating the
+  // project so this file (and the paths in it) resolve correctly.
+  "name": "cookie-and-crumb",
+  "compatibility_date": "2026-08-11",
+  "assets": {
+    "directory": "."
+  }
+}
