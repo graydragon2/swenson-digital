@@ -122,13 +122,13 @@ const CONFIG = {
 
   // ---- About page ------------------------------------------------------
   about: {
-    heading: "Meet the Baker",
-    // "Woman-owned (wife/mother/teacher)" is straight from their real FB bio.
-    // Everything past that first sentence is a draft — ask her to fill in
-    // her actual story (how she started, why baking, etc.) before this goes live.
-    body: "Cookie & Crumb is a woman-owned cottage bakery in Screven, GA — run by a wife, mother, and teacher who bakes everything from scratch, in small batches, with real ingredients. [Draft — add her real story here: how Cookie & Crumb got started, what baking means to her, anything that makes this more than just a menu.]",
-    photo: "images/real/crumb-cruiser-cart.jpg",
-    photoAlt: "The Crumb Cruiser, Cookie & Crumb's mobile treat cart, set up and open for business",
+    heading: "Meet Rachel",
+    // Paraphrased from her real "who I am" Facebook post (Nov 9) — not
+    // invented, but paraphrased rather than quoted verbatim, so still worth
+    // having her confirm the exact wording before this goes live.
+    body: "Hi, I'm Rachel — the one-woman baker behind Cookie & Crumb. Between being a wife, mom, teacher, and grad school student, plus a full-time travel ball, softball, and gymnastics mom, free time is hard to come by — but the little I had, I started spending on baking. That turned into this. Everything is still made from scratch, in small batches, by me. Follow along, and don't hesitate to reach out if you want to order or just have a question.",
+    photo: "images/real/rachel-headshot.jpg",
+    photoAlt: "Rachel, the baker behind Cookie & Crumb",
   },
 
   // ---- Photo gallery (optional) ------------------------------------------
