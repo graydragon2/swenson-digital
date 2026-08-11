@@ -58,6 +58,10 @@ const CONFIG = {
     { day: "Ordering", hours: "Anytime — call, text, or message on Facebook" },
     { day: "Pickup / Delivery", hours: "Arranged when you order" },
     { day: "The Crumb Cruiser (pop-up cart)", hours: "Dates posted on Facebook" },
+    // New as of 8/11/2026 — a real retail stockist with walk-in hours.
+    // Weekly drops, so stock varies; kept the "follow Facebook" framing
+    // rather than promising specific items are always in stock.
+    { day: "Weekend Sweets LLC (Jesup)", hours: "Tue–Thu 11am–5pm, Fri 11am–6pm, Sat 11am–2pm — weekly drops, follow Facebook for what's in stock" },
   ],
 
   // ---- Social links -----------------------------------------------------
@@ -136,6 +140,7 @@ const CONFIG = {
     { src: "images/real/wc-cake-pops.jpg", alt: "Cookie & Crumb chocolate letter cake pops, decorated with gold detail" },
     { src: "images/real/sourdough-boule.jpg", alt: "A freshly baked sourdough boule from Cookie & Crumb" },
     { src: "images/real/crumb-cruiser-cart.jpg", alt: "The Crumb Cruiser mobile treat cart, open for business" },
+    { src: "images/real/packaged-cookies-trio.jpg", alt: "Individually wrapped Cookie & Crumb cookies with cottage food labels — Browned Butter Chocolate Chip, Brookie, and Double Chocolate Fudge" },
   ],
 
   // ---- Testimonials / Reviews ---------------------------------------------
