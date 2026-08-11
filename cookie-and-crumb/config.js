@@ -113,12 +113,11 @@ const CONFIG = {
       description: "A themed surprise box of baked goods delivered every month.",
       price: "",
     },
-    {
-      name: "The Crumb Cruiser",
-      description: "Our mobile treat cart pops up around Screven — follow Facebook for dates and locations.",
-      price: "",
-    },
   ],
+  // Note: "The Crumb Cruiser" (the mobile pop-up cart) was pulled out of this
+  // list on purpose — it's a place to buy, not a product like the rest of
+  // these. Its info already lives in the Hours table below (and on the
+  // Contact page), so it doesn't need its own menu card.
 
   // ---- About page ------------------------------------------------------
   about: {
