@@ -1,0 +1,167 @@
+/* ============================================================================
+   CONFIG — Cookie & Crumb (Screven, GA)
+   ----------------------------------------------------------------------------
+   Built from their Facebook page (facebook.com/share/1LYZFVP9ma/) as a test
+   fork of the Live Oak Digital client template. Real business info below;
+   product photos are still placeholders — see the note on `gallery` below.
+   ============================================================================ */
+
+const CONFIG = {
+
+  // ---- Basic business info -------------------------------------------------
+  business: {
+    name: "Cookie & Crumb",
+    tagline: "We make all your sweet dreams come true!",
+    description: "A woman-owned, made-from-scratch cottage bakery in Screven, GA — gourmet cookies, sourdough, scones, and more, baked in small batches.",
+  },
+
+  // ---- Labels ---------------------------------------------------------------
+  labels: {
+    servicesNav: "Menu",
+    servicesHeading: "Our Menu",
+  },
+
+  // ---- Theme colors -----------------------------------------------------
+  // Pulled from their actual Facebook branding (deep purple + near-black,
+  // with a warm gold accent) instead of reusing another client's palette.
+  theme: {
+    primary: "#6a3093",
+    primaryDark: "#3c1a56",
+    accent: "#e8a33d",
+    bg: "#ffffff",
+    surface: "#f7f2fa",
+    text: "#241b2e",
+    textLight: "#5e5268",
+    border: "#e5dcee",
+  },
+
+  // ---- Contact -----------------------------------------------------------
+  contact: {
+    phoneDisplay: "(912) 294-5498",
+    phoneHref: "+19122945498",
+    email: "cookieandcrumb2@gmail.com",
+    // This is where their mobile cart ("The Crumb Cruiser") sets up, not a
+    // storefront — see the note in about.html / contact.html copy.
+    address: {
+      street: "115 W. J.L. Tyre St.",
+      city: "Screven",
+      state: "GA",
+      zip: "31560",
+    },
+  },
+
+  // ---- Hours ---------------------------------------------------------------
+  // Cottage bakery, no fixed storefront hours — everything is by order, with
+  // occasional pop-up cart dates announced on Facebook. Repurposing the
+  // day/hours rows to fit that instead of a Mon-Fri schedule that doesn't apply.
+  hours: [
+    { day: "Ordering", hours: "Anytime — call, text, or message on Facebook" },
+    { day: "Pickup / Delivery", hours: "Arranged when you order" },
+    { day: "The Crumb Cruiser (pop-up cart)", hours: "Dates posted on Facebook" },
+  ],
+
+  // ---- Social links -----------------------------------------------------
+  social: {
+    facebook: "https://www.facebook.com/share/1LYZFVP9ma/",
+    instagram: "",
+  },
+
+  // ---- Review links -------------------------------------------------------
+  // TODO: swap for a direct link to their Facebook reviews tab once you have
+  // the canonical page URL (the share link above works but isn't ideal for this).
+  reviewLinks: {
+    google: "",
+    facebook: "",
+  },
+
+  // ---- Hero (Home page) -----------------------------------------------------
+  hero: {
+    heading: "We Make All Your Sweet Dreams Come True",
+    subheading: "Gourmet, made-from-scratch cookies, sourdough, scones, and more — baked in small batches in Screven, GA.",
+    photo: "images/placeholder-wide.svg",
+    // TODO: replace with a real photo — they have plenty on Facebook (the
+    // purple Crumb Cruiser trailer is a great hero shot).
+    photoAlt: "[Placeholder — replace with a real photo of Cookie & Crumb's baked goods or the Crumb Cruiser cart]",
+  },
+
+  // ---- Menu ---------------------------------------------------------------
+  // Their real Facebook menu graphic lists 60+ individual flavors — too many
+  // for individual cards, so these are grouped by category with a few
+  // standout flavors named in the description. No prices were listed
+  // anywhere on their page (order-based pricing), so price is left blank.
+  services: [
+    {
+      name: "Sourdough Loaves",
+      description: "15+ scratch-made flavors — Classic Artisan, Jalapeño Cheddar, Cranberry Pecan, and more. Full, half, or mini.",
+      price: "",
+    },
+    {
+      name: "Cookies & Cookie Sandwiches",
+      description: "30+ flavors, from classic Chocolate Chip to Oatmeal Cream Pies, Cookie Monster, and Key Lime Sandwich.",
+      price: "",
+    },
+    {
+      name: "Scones",
+      description: "10 flavors, including Peach Cobbler, Bacon Cheddar Chive, and White Chocolate Cranberry.",
+      price: "",
+    },
+    {
+      name: "Brownies, Dot Cakes & More",
+      description: "Brown butter brownies, viral dot cakes, and glazed lemon blueberry loaves.",
+      price: "",
+    },
+    {
+      name: "Monthly Subscription Box",
+      description: "A themed surprise box of baked goods delivered every month.",
+      price: "",
+    },
+    {
+      name: "The Crumb Cruiser",
+      description: "Our mobile treat cart pops up around Screven — follow Facebook for dates and locations.",
+      price: "",
+    },
+  ],
+
+  // ---- About page ------------------------------------------------------
+  about: {
+    heading: "Meet the Baker",
+    // "Woman-owned (wife/mother/teacher)" is straight from their real FB bio.
+    // Everything past that first sentence is a draft — ask her to fill in
+    // her actual story (how she started, why baking, etc.) before this goes live.
+    body: "Cookie & Crumb is a woman-owned cottage bakery in Screven, GA — run by a wife, mother, and teacher who bakes everything from scratch, in small batches, with real ingredients. [Draft — add her real story here: how Cookie & Crumb got started, what baking means to her, anything that makes this more than just a menu.]",
+    photo: "images/placeholder-wide.svg",
+    photoAlt: "[Placeholder — replace with a photo of the baker]",
+  },
+
+  // ---- Photo gallery (optional) ------------------------------------------
+  // They have great photos already on Facebook (cookie sandwiches, the
+  // purple Crumb Cruiser trailer, seasonal menu boards) — worth pulling a
+  // handful over once you're building this for real.
+  gallery: [
+    { src: "images/placeholder-wide.svg", alt: "[Placeholder — replace with a real photo]" },
+    { src: "images/placeholder-wide.svg", alt: "[Placeholder — replace with a real photo]" },
+    { src: "images/placeholder-wide.svg", alt: "[Placeholder — replace with a real photo]" },
+    { src: "images/placeholder-wide.svg", alt: "[Placeholder — replace with a real photo]" },
+  ],
+
+  // ---- Testimonials / Reviews ---------------------------------------------
+  // Their one real Facebook review, used as-is. Add more here as they come in.
+  testimonials: [
+    {
+      quote: "We tried a variety of cookies. The oatmeal cream pies were my favorite. The Oreo cookies were a hit with the littles.",
+      author: "Dawn Stone",
+      source: "Facebook Review",
+    },
+  ],
+
+  // ---- SEO -----------------------------------------------------------------
+  seo: {
+    siteUrl: "https://www.example.com",
+  },
+
+  // ---- Live Oak Digital credit ---------------------------------------------
+  builtBy: {
+    label: "Website by Live Oak Digital",
+    url: "https://www.liveoakdigital.co",
+  },
+};

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" role="img" aria-label="Photo placeholder">
+  <rect width="800" height="600" fill="#e0e2dc"/>
+  <g fill="none" stroke="#9aa39c" stroke-width="3">
+    <rect x="40" y="40" width="720" height="520" rx="8"/>
+    <path d="M40 460 260 300 420 420 560 260 760 440"/>
+    <circle cx="620" cy="140" r="46"/>
+  </g>
+  <text x="400" y="560" text-anchor="middle" font-family="sans-serif" font-size="22" fill="#5b6663">Photo placeholder — replace in /images</text>
+</svg>
