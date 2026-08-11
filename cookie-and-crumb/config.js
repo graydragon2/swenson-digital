@@ -78,8 +78,8 @@ const CONFIG = {
   hero: {
     heading: "We Make All Your Sweet Dreams Come True",
     subheading: "Gourmet, made-from-scratch cookies, sourdough, scones, and more — baked in small batches in Screven, GA.",
-    photo: "images/real/sourdough-boule.jpg",
-    photoAlt: "A freshly baked sourdough boule from Cookie & Crumb, golden and scored on top",
+    photo: "images/real/strawberry-cookie.jpg",
+    photoAlt: "A Cookie & Crumb strawberry cookie drizzled with cream cheese icing",
   },
 
   // ---- Menu ---------------------------------------------------------------
