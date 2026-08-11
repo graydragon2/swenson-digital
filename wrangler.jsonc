@@ -1,11 +1,11 @@
 {
-  // Cloudflare Workers config for deploying the Live Oak Digital pitch site
+  // Cloudflare Workers config for deploying the Swenson Digital pitch site
   // as static assets. Root directory in the Cloudflare dashboard is set to
   // "/" (repo root), so this file has to live here rather than inside
   // pitch-site/. Points at pitch-site/ specifically because the repo also
   // contains client-template/ (a separate site, not meant to be deployed
   // here — it's the starter template used for future client projects).
-  "name": "live-oak-digital",
+  "name": "swenson-digital",
   "compatibility_date": "2026-08-11",
   "assets": {
     "directory": "./pitch-site"

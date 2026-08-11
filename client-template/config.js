@@ -172,11 +172,11 @@ const CONFIG = {
     siteUrl: "https://www.example.com",
   },
 
-  // ---- Live Oak Digital credit ---------------------------------------------
+  // ---- Swenson Digital credit ---------------------------------------------
   // Small footer credit line linking back to your own site. Set to "" to
   // remove it for a client who'd rather not have it.
   builtBy: {
-    label: "Website by Live Oak Digital",
-    url: "https://www.liveoakdigital.co",
+    label: "Website by Swenson Digital",
+    url: "https://www.swensondigital.co",
   },
 };

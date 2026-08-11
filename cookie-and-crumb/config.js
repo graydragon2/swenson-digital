@@ -2,7 +2,7 @@
    CONFIG — Cookie & Crumb (Screven, GA)
    ----------------------------------------------------------------------------
    Built from their Facebook page (facebook.com/share/1LYZFVP9ma/) as a test
-   fork of the Live Oak Digital client template. Real business info below;
+   fork of the Swenson Digital client template. Real business info below;
    product photos are still placeholders — see the note on `gallery` below.
    ============================================================================ */
 
@@ -154,9 +154,9 @@ const CONFIG = {
     siteUrl: "https://www.example.com",
   },
 
-  // ---- Live Oak Digital credit ---------------------------------------------
+  // ---- Swenson Digital credit ---------------------------------------------
   builtBy: {
-    label: "Website by Live Oak Digital",
-    url: "https://www.liveoakdigital.co",
+    label: "Website by Swenson Digital",
+    url: "https://www.swensondigital.co",
   },
 };

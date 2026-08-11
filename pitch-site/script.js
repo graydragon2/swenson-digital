@@ -1,4 +1,4 @@
-// Live Oak Digital — pitch site interactivity (no dependencies)
+// Swenson Digital — pitch site interactivity (no dependencies)
 
 document.addEventListener('DOMContentLoaded', () => {
   // Mobile nav toggle

@@ -1,4 +1,4 @@
-# Live Oak Digital — Client Site Template
+# Swenson Digital — Client Site Template
 
 A generic, reusable starter for client websites. No build step, no
 frameworks, no dependencies — plain HTML/CSS/JS you can open straight in a
