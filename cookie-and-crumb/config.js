@@ -96,26 +96,31 @@ const CONFIG = {
       name: "Sourdough Loaves",
       description: "15+ scratch-made flavors — Classic Artisan, Jalapeño Cheddar, Cranberry Pecan, and more. Full, half, or mini.",
       price: "",
+      icon: "🍞",
     },
     {
       name: "Cookies & Cookie Sandwiches",
       description: "30+ flavors, from classic Chocolate Chip to Oatmeal Cream Pies, Cookie Monster, and Key Lime Sandwich.",
       price: "",
+      icon: "🍪",
     },
     {
       name: "Scones",
       description: "10 flavors, including Peach Cobbler, Bacon Cheddar Chive, and White Chocolate Cranberry.",
       price: "",
+      icon: "🥐",
     },
     {
       name: "Brownies, Dot Cakes & More",
       description: "Brown butter brownies, viral dot cakes, and glazed lemon blueberry loaves.",
       price: "",
+      icon: "🧁",
     },
     {
       name: "Monthly Subscription Box",
       description: "A themed surprise box of baked goods delivered every month.",
       price: "",
+      icon: "📦",
     },
   ],
   // Note: "The Crumb Cruiser" (the mobile pop-up cart) was pulled out of this

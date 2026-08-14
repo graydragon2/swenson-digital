@@ -100,6 +100,7 @@
         .map(
           (service) => `
         <article class="card service-item">
+          ${service.icon ? `<span class="icon-badge" aria-hidden="true">${escapeHtml(service.icon)}</span>` : ''}
           <h3>${escapeHtml(service.name)}</h3>
           <p>${escapeHtml(service.description)}</p>
           ${service.price ? `<p class="service-price">${escapeHtml(service.price)}</p>` : ''}
