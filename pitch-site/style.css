@@ -113,11 +113,14 @@ section { padding: clamp(2.75rem, 6vw, 5rem) 0; }
 }
 .btn:hover { transform: translateY(-1px); }
 
+/* clay + white text is only ~4.16:1 — fails WCAG AA (4.5:1) for
+   normal-weight text. clay-dark passes comfortably (~5.7:1) and reads
+   as the more grounded, confident version of the same color anyway. */
 .btn-primary {
-  background: var(--clay);
+  background: var(--clay-dark);
   color: var(--white);
 }
-.btn-primary:hover { background: var(--clay-dark); }
+.btn-primary:hover { background: var(--clay); }
 
 .btn-ghost {
   background: transparent;
@@ -447,7 +450,7 @@ section { padding: clamp(2.75rem, 6vw, 5rem) 0; }
 
 .price-badge {
   display: inline-block;
-  background: var(--clay);
+  background: var(--clay-dark);
   color: var(--white);
   font-size: 0.78rem;
   font-weight: 700;

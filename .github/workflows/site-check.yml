@@ -16,7 +16,7 @@ on:
   workflow_dispatch: {}
 
 env:
-  SITE_URL: https://live-oak-digital.graydragon2.workers.dev/
+  SITE_URL: https://swenson-digital.graydragon2.workers.dev/
 
 jobs:
   check:
