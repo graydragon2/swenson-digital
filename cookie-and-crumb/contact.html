@@ -12,9 +12,14 @@
 <meta property="og:title" content="Contact | Cookie & Crumb">
 <meta property="og:description" content="Order from Cookie & Crumb in Screven, GA — call, text, or message on Facebook.">
 <meta property="og:url" content="https://www.example.com/contact.html">
+<meta property="og:image" content="https://www.example.com/images/real/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <link rel="canonical" href="https://www.example.com/contact.html">
 
-<link rel="icon" type="image/jpeg" href="images/real/logo.jpg">
+<link rel="icon" type="image/png" sizes="32x32" href="images/real/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/real/favicon-16.png">
+<link rel="apple-touch-icon" href="images/real/apple-touch-icon.png">
 
 <script type="application/ld+json">
 {
@@ -100,11 +105,14 @@
       </div>
 
       <div>
-        <h2>Send a Message</h2>
+        <h2>Send a Message <span class="placeholder-tag inline">form isn't live yet</span></h2>
+        <p class="section-sub">This form isn't connected yet — please use Facebook Messenger, call, or text for now.</p>
         <!--
           FORM SETUP: this points at Formspree (https://formspree.io) as a
-          no-backend form service. Create a free form there and replace
-          YOUR_FORM_ID below. Swap for any other form endpoint the same way.
+          no-backend form service. Create a free form there, replace
+          YOUR_FORM_ID below, and remove the placeholder-tag + notice above
+          once it's wired up and tested. Swap for any other form endpoint
+          the same way.
         -->
         <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
           <label for="name">Your name</label>

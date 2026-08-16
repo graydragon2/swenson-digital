@@ -115,8 +115,11 @@ section + section { border-top: 1px solid var(--border); }
 }
 .btn:hover { transform: translateY(-1px); }
 
-.btn-primary { background: var(--accent); color: #fff; }
-.btn-primary:hover { filter: brightness(0.92); }
+/* White text on the accent gold fails WCAG AA contrast (~2.3:1); dark
+   purple text on the same gold passes comfortably (~6.3:1) and still
+   reads as "on-brand" against the rest of the palette. */
+.btn-primary { background: var(--accent); color: var(--primary-dark); }
+.btn-primary:hover { filter: brightness(0.94); }
 
 .btn-outline {
   background: transparent;
