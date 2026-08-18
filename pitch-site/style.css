@@ -85,7 +85,7 @@ section { padding: clamp(2.75rem, 6vw, 5rem) 0; }
 }
 
 .page-header {
-  background: var(--cream-dark);
+  background: radial-gradient(120% 180% at 50% -20%, var(--white), var(--cream-dark) 75%);
   padding: clamp(2.5rem, 6vw, 4rem) 0;
   text-align: center;
 }
@@ -93,7 +93,7 @@ section { padding: clamp(2.75rem, 6vw, 5rem) 0; }
 .page-header .section-sub { margin-left: auto; margin-right: auto; }
 
 .cta-banner {
-  background: var(--cream-dark);
+  background: radial-gradient(120% 180% at 50% 120%, var(--white), var(--cream-dark) 75%);
   text-align: center;
 }
 .cta-banner .section-sub { margin-left: auto; margin-right: auto; }
@@ -119,8 +119,13 @@ section { padding: clamp(2.75rem, 6vw, 5rem) 0; }
 .btn-primary {
   background: var(--clay-dark);
   color: var(--white);
+  box-shadow: 0 0 0 rgba(193, 98, 45, 0);
+  transition: transform 0.15s ease, background-color 0.2s ease, box-shadow 0.25s ease;
 }
-.btn-primary:hover { background: var(--clay); }
+.btn-primary:hover {
+  background: var(--clay);
+  box-shadow: 0 8px 22px rgba(193, 98, 45, 0.32);
+}
 
 .btn-ghost {
   background: transparent;
@@ -208,11 +213,27 @@ section { padding: clamp(2.75rem, 6vw, 5rem) 0; }
   gap: 1.75rem;
 }
 .primary-nav a {
+  position: relative;
   color: var(--ink);
   text-decoration: none;
   font-weight: 500;
 }
+.primary-nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 2px;
+  background: var(--clay);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
 .primary-nav a:hover { color: var(--clay); }
+.primary-nav a:hover::after,
+.primary-nav a[aria-current="page"]:not(.nav-cta)::after { transform: scaleX(1); }
+.primary-nav .nav-cta::after { display: none; }
 .primary-nav .nav-cta {
   background: var(--pine);
   color: var(--white);
@@ -253,11 +274,37 @@ section { padding: clamp(2.75rem, 6vw, 5rem) 0; }
 /* ---------- Hero ---------- */
 .hero {
   padding-top: clamp(2.5rem, 6vw, 4.5rem);
-  /* Faint dot grain for a little depth behind the hero copy, instead of a
-     flat wash of cream — restrained on purpose, not a decorative gradient. */
-  background-image: radial-gradient(circle, var(--border) 1.3px, transparent 1.3px);
-  background-size: 26px 26px;
-  background-position: -8px -8px;
+  position: relative;
+  overflow: hidden;
+  /* Soft directional wash + dot grain, instead of a flat cream block — the
+     gradient alone is what reads as "depth" at a glance, before any
+     scroll/hover interaction happens. */
+  background-image:
+    radial-gradient(circle, var(--border) 1.3px, transparent 1.3px),
+    linear-gradient(160deg, var(--cream) 0%, var(--cream) 55%, var(--cream-dark) 100%);
+  background-size: 26px 26px, 100% 100%;
+  background-position: -8px -8px, 0 0;
+}
+
+/* Soft glow behind the hero illustration — a slow, barely-there pulse so
+   the page feels alive even before anyone scrolls or hovers. Purely
+   decorative, so it's gated on prefers-reduced-motion directly rather than
+   the .js-motion class (works with JS disabled too). */
+.hero-art { position: relative; }
+.hero-art::before {
+  content: '';
+  position: absolute;
+  inset: -10%;
+  z-index: -1;
+  background: radial-gradient(circle, rgba(193, 98, 45, 0.16), transparent 65%);
+  filter: blur(6px);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero-art::before { animation: glow-pulse 7s ease-in-out infinite; }
+}
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.06); }
 }
 .hero-inner {
   display: grid;
@@ -301,7 +348,7 @@ section { padding: clamp(2.75rem, 6vw, 5rem) 0; }
 
 /* ---------- Problem ---------- */
 .problem {
-  background: var(--pine-dark);
+  background: linear-gradient(155deg, var(--pine) 0%, var(--pine-dark) 70%);
   color: var(--cream);
 }
 .problem h2 { color: var(--white); }
@@ -356,6 +403,12 @@ section { padding: clamp(2.75rem, 6vw, 5rem) 0; }
   background: var(--cream-dark);
   color: var(--pine);
   margin-bottom: 1rem;
+  transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+.service-card:hover .icon-badge {
+  background: var(--pine);
+  color: var(--white);
+  transform: scale(1.08) rotate(-4deg);
 }
 .service-card p { color: var(--ink-light); margin-bottom: 0; }
 
