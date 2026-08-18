@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>
+  // Adds .js-motion to <html> ONLY when JS runs and the visitor hasn't
+  // asked for reduced motion. Scroll-reveal CSS in style.css is scoped to
+  // .js-motion, so with JS off or motion reduced, everything just renders
+  // normally — nothing can get stuck hidden. Inline + synchronous so it
+  // runs before first paint (no flash of content popping in).
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.documentElement.classList.add('js-motion');
+  }
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -88,7 +98,7 @@
     client doesn't need it, delete this whole <section> and remove CONFIG.gallery,
     or just leave CONFIG.gallery as an empty array ([]) and it hides itself.
   -->
-  <section style="background: var(--surface);" data-gallery-section>
+  <section class="gallery-section" data-gallery-section>
     <div class="wrap">
       <h2>Photos</h2>
       <div class="gallery-grid" data-render="gallery"></div>

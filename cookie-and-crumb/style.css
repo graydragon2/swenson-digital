@@ -95,9 +95,20 @@ section + section { border-top: 1px solid var(--border); }
 .page-header {
   background:
     radial-gradient(circle, var(--border) 1.4px, transparent 1.4px) 0 0 / 22px 22px,
-    var(--surface);
+    radial-gradient(120% 180% at 50% -20%, var(--bg), var(--surface) 75%);
   padding: clamp(2.5rem, 6vw, 4rem) 0;
   text-align: center;
+}
+
+/* CTA sections and the about-page gallery section — replaces a flat
+   var(--surface) fill with a soft radial wash so these blocks have some
+   depth instead of reading as flat slabs next to the white sections. */
+.cta-section {
+  background: radial-gradient(120% 180% at 50% 120%, var(--bg), var(--surface) 75%);
+  text-align: center;
+}
+.gallery-section {
+  background: radial-gradient(120% 160% at 50% 0%, var(--bg), var(--surface) 80%);
 }
 
 /* ---------- Buttons ---------- */
@@ -118,8 +129,16 @@ section + section { border-top: 1px solid var(--border); }
 /* White text on the accent gold fails WCAG AA contrast (~2.3:1); dark
    purple text on the same gold passes comfortably (~6.3:1) and still
    reads as "on-brand" against the rest of the palette. */
-.btn-primary { background: var(--accent); color: var(--primary-dark); }
-.btn-primary:hover { filter: brightness(0.94); }
+.btn-primary {
+  background: var(--accent);
+  color: var(--primary-dark);
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  transition: transform 0.15s ease, filter 0.15s ease, box-shadow 0.25s ease;
+}
+.btn-primary:hover {
+  filter: brightness(0.94);
+  box-shadow: 0 8px 20px color-mix(in srgb, var(--accent) 45%, transparent);
+}
 
 .btn-outline {
   background: transparent;
@@ -180,12 +199,27 @@ section + section { border-top: 1px solid var(--border); }
   gap: 1.5rem;
 }
 .primary-nav a {
+  position: relative;
   color: var(--text);
   text-decoration: none;
   font-weight: 500;
 }
+.primary-nav a:not(.nav-cta)::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 2px;
+  background: var(--primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
 .primary-nav a:not(.nav-cta):hover,
 .primary-nav a:not(.nav-cta)[aria-current="page"] { color: var(--primary); }
+.primary-nav a:not(.nav-cta):hover::after,
+.primary-nav a:not(.nav-cta)[aria-current="page"]::after { transform: scaleX(1); }
 
 .primary-nav .nav-cta {
   background: var(--primary);
@@ -255,11 +289,31 @@ section + section { border-top: 1px solid var(--border); }
   color: var(--primary);
 }
 .hero-photo {
+  position: relative;
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: var(--shadow-md);
   border: 6px solid var(--bg);
   outline: 1px solid var(--border);
+}
+/* Soft glow behind the hero photo — a slow, barely-there pulse so the page
+   feels alive at rest, not just when a card scrolls into view. Decorative,
+   so it's gated on prefers-reduced-motion directly rather than .js-motion
+   (keeps working with JS disabled). */
+.hero-photo::before {
+  content: '';
+  position: absolute;
+  inset: -14%;
+  z-index: -1;
+  background: radial-gradient(circle, color-mix(in srgb, var(--accent) 35%, transparent), transparent 65%);
+  filter: blur(8px);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero-photo::before { animation: glow-pulse 7s ease-in-out infinite; }
+}
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
 }
 @media (min-width: 860px) {
   .hero-inner { grid-template-columns: 1.05fr 0.95fr; }
@@ -302,7 +356,9 @@ section + section { border-top: 1px solid var(--border); }
   background: var(--surface);
   font-size: 1.4rem;
   margin-bottom: 0.75rem;
+  transition: transform 0.25s ease;
 }
+.service-item:hover .icon-badge { transform: scale(1.1) rotate(-4deg); }
 
 .service-item .service-price {
   font-weight: 700;
@@ -495,7 +551,61 @@ section + section { border-top: 1px solid var(--border); }
 }
 .footer-bottom a { color: rgba(255,255,255,0.9); }
 
+/* ---------- Scroll reveals ----------
+   Hidden starting state is scoped to .js-motion, set by an inline snippet
+   in <head> ONLY when JS runs and the visitor hasn't asked for reduced
+   motion — so with JS off, or motion reduced, everything renders normally
+   and nothing can get stuck invisible. Services/testimonials/gallery are
+   rendered dynamically by main.js, so the observer that adds .is-visible
+   is wired up there, after those render calls run — see main.js. */
+.js-motion .card,
+.js-motion .gallery-grid img {
+  opacity: 0;
+  transform: translateY(18px);
+}
+.card,
+.gallery-grid img {
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.18s ease;
+}
+/* Specificity must match or exceed every hidden-state selector above —
+   ".gallery-grid img" (class+element) otherwise outranks a bare
+   ".is-visible" (class only) and the image stays stuck at opacity:0
+   even after the class is added. Repeating the compound selectors here
+   keeps each pair's specificity tied, so is-visible always wins. */
+.js-motion .card.is-visible,
+.js-motion .gallery-grid img.is-visible { opacity: 1; transform: none; }
+
+/* Hero entrance — runs on load since it's already in view. */
+.js-motion .hero-copy > * {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: rise-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.js-motion .hero-copy > :nth-child(1) { animation-delay: 0.05s; }
+.js-motion .hero-copy > :nth-child(2) { animation-delay: 0.13s; }
+.js-motion .hero-copy > :nth-child(3) { animation-delay: 0.21s; }
+.js-motion .hero-copy > :nth-child(4) { animation-delay: 0.29s; }
+.js-motion .hero-photo {
+  opacity: 0;
+  animation: fade-in 0.9s ease 0.25s forwards;
+}
+@keyframes rise-in { to { opacity: 1; transform: none; } }
+@keyframes fade-in { to { opacity: 1; } }
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .btn, .card, .gallery-grid img { transition: none; }
+  .hero-photo::before { animation: none; }
+  /* Belt and braces: .js-motion is never set under reduced motion, but if
+     a browser reports the preference late, make sure nothing stays hidden. */
+  .card,
+  .gallery-grid img,
+  .hero-copy > *,
+  .hero-photo {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
 }

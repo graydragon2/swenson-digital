@@ -192,6 +192,38 @@
     return div.innerHTML;
   }
 
+  // Fades/rises .card and gallery images into view on scroll. Only takes
+  // effect when <html> has .js-motion (see the inline snippet in <head>).
+  // Must run AFTER renderServices/renderTestimonials/renderGallery, since
+  // those inject the elements this observes — called last in
+  // DOMContentLoaded below.
+  function initScrollReveal() {
+    if (!document.documentElement.classList.contains('js-motion')) return;
+    const targets = document.querySelectorAll('.card, .gallery-grid img');
+    if (!targets.length) return;
+
+    if (!('IntersectionObserver' in window)) {
+      targets.forEach((el) => el.classList.add('is-visible'));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const siblings = Array.from(entry.target.parentElement.children);
+            const index = siblings.indexOf(entry.target);
+            entry.target.style.transitionDelay = `${Math.min(index, 4) * 70}ms`;
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+    );
+    targets.forEach((el) => observer.observe(el));
+  }
+
   // ---- Mobile nav + footer year, same pattern on every page ----------------
   function bindChrome() {
     const header = document.querySelector('.site-header');
@@ -228,5 +260,6 @@
     renderAddressLines();
     bindBuiltByCredit();
     bindChrome();
+    initScrollReveal();
   });
 })();

@@ -807,7 +807,13 @@ section { padding: clamp(2.75rem, 6vw, 5rem) 0; }
               transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.js-motion .is-visible {
+/* Specificity must match or exceed every hidden-state selector above —
+   ".problem-list li" (class+element) otherwise outranks a bare
+   ".is-visible" (class only) and those items stay stuck at opacity:0
+   even after the class is added. Repeating it here keeps that pair's
+   specificity tied, so is-visible always wins regardless of source order. */
+.js-motion .is-visible,
+.js-motion .problem-list li.is-visible {
   opacity: 1;
   transform: none;
 }
