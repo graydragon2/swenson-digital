@@ -25,6 +25,10 @@ client-template/
 
 ## Forking this for a new client (the fast path)
 
+0. **Send the client `CLIENT-QUESTIONNAIRE.md`** (or the polished version
+   published at the link inside it) before you start — their answers map
+   straight onto `config.js`, so this is what makes step 2 fast instead of
+   a scavenger hunt through their Facebook page.
 1. **Copy this whole folder** to a new project (e.g. `cp -r client-template acme-diner`).
 2. **Open `config.js`** and fill in every `[bracketed placeholder]`:
    - `business.name`, `tagline`, `description`
