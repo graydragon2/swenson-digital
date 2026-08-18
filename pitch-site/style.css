@@ -251,7 +251,14 @@ section { padding: clamp(2.75rem, 6vw, 5rem) 0; }
 }
 
 /* ---------- Hero ---------- */
-.hero { padding-top: clamp(2.5rem, 6vw, 4.5rem); }
+.hero {
+  padding-top: clamp(2.5rem, 6vw, 4.5rem);
+  /* Faint dot grain for a little depth behind the hero copy, instead of a
+     flat wash of cream — restrained on purpose, not a decorative gradient. */
+  background-image: radial-gradient(circle, var(--border) 1.3px, transparent 1.3px);
+  background-size: 26px 26px;
+  background-position: -8px -8px;
+}
 .hero-inner {
   display: grid;
   gap: 2.5rem;
@@ -524,10 +531,27 @@ section { padding: clamp(2.75rem, 6vw, 5rem) 0; }
   .step-list { grid-template-columns: repeat(4, 1fr); }
 }
 .step-card {
+  position: relative;
   background: var(--white);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 1.75rem;
+}
+/* Connects the numbered circles across the gap between cards, so the
+   sequence reads as one continuous line rather than four loose numbers.
+   Only at the breakpoint where .step-list is a single row of 4 — at
+   narrower widths the cards wrap, and a straight line would cut across
+   rows incorrectly. */
+@media (min-width: 1000px) {
+  .step-card:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: calc(1.75rem + 18px);
+    right: calc(-1.5rem - 1px);
+    width: calc(1.5rem + 2px);
+    height: 2px;
+    background: var(--border);
+  }
 }
 .step-num {
   display: inline-flex;
@@ -699,7 +723,97 @@ section { padding: clamp(2.75rem, 6vw, 5rem) 0; }
   border-top: 1px solid rgba(255, 255, 255, 0.15);
 }
 
+/* ---------- Scroll reveals ----------
+   The hidden starting state is scoped to .js-motion, which is set by a tiny
+   inline script in <head> ONLY when JS runs and the visitor hasn't asked for
+   reduced motion. So with JS off, or motion reduced, none of this applies and
+   every element renders normally — nothing can get stuck invisible.
+
+   NOTE: the selector list below is mirrored in script.js (REVEAL_SELECTOR).
+   Keep the two in sync if you add a new element type here. */
+.js-motion .service-card,
+.js-motion .step-card,
+.js-motion .proof-card,
+.js-motion .price-card,
+.js-motion .faq-item,
+.js-motion .social-mockup,
+.js-motion .problem-list li {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.service-card,
+.step-card,
+.proof-card,
+.price-card,
+.faq-item,
+.social-mockup,
+.problem-list li {
+  /* Long, decelerating ease — motion should settle, not bounce. */
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.js-motion .is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Hero entrance — runs on load rather than scroll, since it's already
+   in view. Same restraint: one short, settled move. */
+.js-motion .hero-copy > * {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: rise-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.js-motion .hero-copy > :nth-child(1) { animation-delay: 0.05s; }
+.js-motion .hero-copy > :nth-child(2) { animation-delay: 0.13s; }
+.js-motion .hero-copy > :nth-child(3) { animation-delay: 0.21s; }
+.js-motion .hero-copy > :nth-child(4) { animation-delay: 0.29s; }
+
+.js-motion .hero-art {
+  opacity: 0;
+  animation: fade-in 0.9s ease 0.25s forwards;
+}
+
+@keyframes rise-in {
+  to { opacity: 1; transform: none; }
+}
+@keyframes fade-in {
+  to { opacity: 1; }
+}
+
+/* Card hover lift — subtle, and only where the whole card is a unit. */
+.service-card,
+.step-card,
+.price-card {
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s ease;
+}
+.service-card:hover,
+.step-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 32px rgba(31, 61, 46, 0.12);
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .btn { transition: none; }
+  /* Belt and braces: .js-motion is never set under reduced motion, but if a
+     browser reports the preference late, make sure nothing animates or hides. */
+  .service-card,
+  .step-card,
+  .proof-card,
+  .price-card,
+  .faq-item,
+  .social-mockup,
+  .problem-list li,
+  .hero-copy > *,
+  .hero-art {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
 }
