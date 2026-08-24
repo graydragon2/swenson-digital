@@ -110,6 +110,29 @@
     });
   }
 
+  // Renders CONFIG.signature into any element with [data-render="signature"]
+  // as alternating image/text editorial rows (see .feature in style.css).
+  function renderSignature() {
+    document.querySelectorAll('[data-render="signature"]').forEach((container) => {
+      const items = CONFIG.signature || [];
+      container.innerHTML = items
+        .map(
+          (item) => `
+        <article class="feature">
+          <div class="feature-media">
+            <img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.imageAlt)}" loading="lazy">
+          </div>
+          <div class="feature-copy">
+            <h3>${escapeHtml(item.name)}</h3>
+            <p>${escapeHtml(item.description)}</p>
+            <a class="feature-link" href="services.html">See the full menu &rarr;</a>
+          </div>
+        </article>`
+        )
+        .join('');
+    });
+  }
+
   // Renders CONFIG.hours into any element with [data-render="hours"]
   function renderHours() {
     document.querySelectorAll('[data-render="hours"]').forEach((container) => {
@@ -192,14 +215,14 @@
     return div.innerHTML;
   }
 
-  // Fades/rises .card and gallery images into view on scroll. Only takes
-  // effect when <html> has .js-motion (see the inline snippet in <head>).
-  // Must run AFTER renderServices/renderTestimonials/renderGallery, since
-  // those inject the elements this observes — called last in
-  // DOMContentLoaded below.
+  // Fades/rises .card, .feature, and gallery images into view on scroll.
+  // Only takes effect when <html> has .js-motion (see the inline snippet in
+  // <head>). Must run AFTER renderServices/renderSignature/renderTestimonials
+  // /renderGallery, since those inject the elements this observes — called
+  // last in DOMContentLoaded below.
   function initScrollReveal() {
     if (!document.documentElement.classList.contains('js-motion')) return;
-    const targets = document.querySelectorAll('.card, .gallery-grid img');
+    const targets = document.querySelectorAll('.card, .feature, .gallery-grid img');
     if (!targets.length) return;
 
     if (!('IntersectionObserver' in window)) {
@@ -222,6 +245,130 @@
       { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
     );
     targets.forEach((el) => observer.observe(el));
+  }
+
+  // On the home page (body.hero-page), the header starts transparent over
+  // the hero photo and solidifies once the hero scrolls out of view.
+  function initHeroHeader() {
+    const header = document.querySelector('.site-header');
+    const hero = document.querySelector('.hero');
+    if (!document.body.classList.contains('hero-page') || !header || !hero) return;
+
+    if (!('IntersectionObserver' in window)) {
+      header.classList.add('scrolled');
+      return;
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          header.classList.toggle('scrolled', entry.intersectionRatio < 0.7);
+        });
+      },
+      { threshold: [0, 0.7] }
+    );
+    observer.observe(hero);
+  }
+
+  // Sticky "Order" bar for small screens — appears once the visitor has
+  // scrolled a bit, hides again once the footer (with its own CTAs) is in
+  // view so it never sits on top of the thing it's duplicating.
+  function initMobileCtaBar() {
+    const bar = document.getElementById('mobileCtaBar');
+    if (!bar) return;
+    bar.hidden = false;
+
+    let footerVisible = false;
+    const footer = document.querySelector('.site-footer');
+    if (footer && 'IntersectionObserver' in window) {
+      new IntersectionObserver((entries) => {
+        entries.forEach((entry) => { footerVisible = entry.isIntersecting; });
+        update();
+      }).observe(footer);
+    }
+
+    function update() {
+      const pastThreshold = window.scrollY > 420;
+      bar.classList.toggle('show', pastThreshold && !footerVisible);
+    }
+
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => { update(); ticking = false; });
+    });
+    update();
+  }
+
+  // ---- Custom order stepper (contact.html) ----------------------------------
+  // A multi-step inquiry flow, entirely client-side. Submission target is
+  // the same not-yet-connected Formspree placeholder as the rest of the
+  // site's forms — see the .placeholder-tag note next to the submit button.
+  // Steps only cover confirmed real menu items; no occasion types or
+  // packages are implied since those haven't been confirmed with Rachel.
+  function initOrderStepper() {
+    const stepper = document.querySelector('[data-stepper]');
+    if (!stepper) return;
+
+    const steps = Array.from(stepper.querySelectorAll('[data-step]'));
+    const segs = Array.from(stepper.querySelectorAll('.stepper-progress-seg'));
+    const meta = stepper.querySelector('[data-stepper-meta]');
+    let current = 0;
+
+    function showStep(index) {
+      steps.forEach((step, i) => { step.hidden = i !== index; });
+      segs.forEach((seg, i) => {
+        seg.classList.toggle('done', i < index);
+        seg.classList.toggle('active', i === index);
+      });
+      if (meta) meta.textContent = `Step ${index + 1} of ${steps.length}`;
+      if (index === steps.length - 1) fillReview();
+      steps[index].querySelector('input, textarea, button')?.focus({ preventScroll: true });
+      stepper.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function stepValid(index) {
+      const required = steps[index].querySelectorAll('[required]');
+      return Array.from(required).every((el) => el.reportValidity());
+    }
+
+    stepper.querySelectorAll('[data-next]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        if (!stepValid(current)) return;
+        if (current < steps.length - 1) { current += 1; showStep(current); }
+      });
+    });
+    stepper.querySelectorAll('[data-back]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        if (current > 0) { current -= 1; showStep(current); }
+      });
+    });
+
+    function fillReview() {
+      const summary = stepper.querySelector('[data-review-summary]');
+      if (!summary) return;
+      const items = Array.from(stepper.querySelectorAll('input[name="items"]:checked')).map((el) => el.value);
+      const rows = [
+        ['What', items.length ? items.join(', ') : 'Not specified'],
+        ['Needed by', stepper.querySelector('[name="needBy"]')?.value || 'Not specified'],
+        ['Quantity', stepper.querySelector('[name="quantity"]')?.value || 'Not specified'],
+        ['Name', stepper.querySelector('[name="name"]')?.value || 'Not specified'],
+        ['Reach me at', stepper.querySelector('[name="phone"]')?.value || stepper.querySelector('[name="email"]')?.value || 'Not specified'],
+      ];
+      summary.innerHTML = rows
+        .map(([label, val]) => `<div class="review-row"><dt>${escapeHtml(label)}</dt><dd>${escapeHtml(val)}</dd></div>`)
+        .join('');
+    }
+
+    const form = stepper.querySelector('form');
+    if (form) {
+      form.addEventListener('submit', () => {
+        // Formspree ID isn't live yet (see placeholder-tag in the markup) —
+        // this still submits harmlessly once a real endpoint is wired in.
+      });
+    }
+
+    showStep(0);
   }
 
   // ---- Mobile nav + footer year, same pattern on every page ----------------
@@ -253,6 +400,7 @@
     bindSocialLinks();
     bindReviewLinks();
     renderServices();
+    renderSignature();
     renderHours();
     renderTestimonials();
     renderGallery();
@@ -260,6 +408,9 @@
     renderAddressLines();
     bindBuiltByCredit();
     bindChrome();
+    initHeroHeader();
+    initMobileCtaBar();
+    initOrderStepper();
     initScrollReveal();
   });
 })();

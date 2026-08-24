@@ -2,11 +2,6 @@
 <html lang="en">
 <head>
 <script>
-  // Adds .js-motion to <html> ONLY when JS runs and the visitor hasn't
-  // asked for reduced motion. Scroll-reveal CSS in style.css is scoped to
-  // .js-motion, so with JS off or motion reduced, everything just renders
-  // normally — nothing can get stuck hidden. Inline + synchronous so it
-  // runs before first paint (no flash of content popping in).
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     document.documentElement.classList.add('js-motion');
   }
@@ -15,12 +10,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- SEO NOTE: keep in sync with config.js by hand — see index.html for why -->
-<title>Contact | Cookie &amp; Crumb</title>
-<meta name="description" content="Order from Cookie & Crumb in Screven, GA — call, text, or message on Facebook.">
+<title>Custom Order | Cookie &amp; Crumb</title>
+<meta name="description" content="Start a custom cookie order with Cookie & Crumb in Screven, GA — or reach out directly by phone, email, or Facebook.">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Contact | Cookie & Crumb">
-<meta property="og:description" content="Order from Cookie & Crumb in Screven, GA — call, text, or message on Facebook.">
+<meta property="og:title" content="Custom Order | Cookie & Crumb">
+<meta property="og:description" content="Start a custom cookie order with Cookie & Crumb in Screven, GA — or reach out directly by phone, email, or Facebook.">
 <meta property="og:url" content="https://www.example.com/contact.html">
 <meta property="og:image" content="https://www.example.com/images/real/og-image.jpg">
 <meta property="og:image:width" content="1200">
@@ -36,7 +31,7 @@
   "@context": "https://schema.org",
   "@type": "Bakery",
   "name": "Cookie & Crumb",
-  "description": "Gourmet, made-from-scratch cookies, sourdough, and scones from a woman-owned cottage bakery in Screven, GA.",
+  "description": "Small-batch, made-from-scratch cookies, sourdough, and scones from a woman-owned cottage bakery in Screven, GA.",
   "url": "https://www.example.com/",
   "telephone": "+19122945498",
   "email": "cookieandcrumb2@gmail.com",
@@ -53,7 +48,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -69,10 +64,10 @@
     </button>
     <nav class="primary-nav" id="primaryNav">
       <a href="index.html">Home</a>
-      <a href="services.html" data-cfg="labels.servicesNav">Services</a>
+      <a href="services.html" data-cfg="labels.servicesNav">Menu</a>
       <a href="about.html">About</a>
       <a href="reviews.html">Reviews</a>
-      <a href="contact.html" class="nav-cta" aria-current="page">Contact</a>
+      <a href="contact.html" class="nav-cta" aria-current="page">Custom Order</a>
     </nav>
   </div>
 </header>
@@ -81,15 +76,130 @@
 
   <div class="page-header">
     <div class="wrap">
-      <h1>Get in Touch</h1>
-      <p class="section-sub" style="margin-left:auto;margin-right:auto;">Cookie & Crumb is a cottage bakery — everything's baked to order out of my home kitchen, so I don't have a storefront of my own. You can also find my treats in person at Weekend Sweets LLC in Jesup (see hours below). Facebook Messenger is the fastest way to reach me, but call, text, or use the form below too.</p>
+      <p class="section-eyebrow">Custom Orders</p>
+      <h1>Made for your order.</h1>
+      <p class="section-sub" style="margin-left:auto;margin-right:auto;">Tell us what you're picturing — five quick steps, no account needed.</p>
     </div>
   </div>
 
-  <section>
-    <div class="wrap contact-grid">
+  <section id="order-form">
+    <div class="wrap">
+      <div class="stepper-wrap">
+        <div class="stepper" data-stepper>
+          <div class="stepper-progress">
+            <div class="stepper-progress-seg"><span></span></div>
+            <div class="stepper-progress-seg"><span></span></div>
+            <div class="stepper-progress-seg"><span></span></div>
+            <div class="stepper-progress-seg"><span></span></div>
+            <div class="stepper-progress-seg"><span></span></div>
+          </div>
+          <p class="stepper-meta" data-stepper-meta>Step 1 of 5</p>
 
+          <!-- FORM SETUP: points at Formspree (https://formspree.io) as a no-backend
+               form service. Create a free form there, replace YOUR_FORM_ID below, and
+               remove the placeholder-tag + note in the review step once it's wired up
+               and tested. multipart/form-data is required for the file input to submit. -->
+          <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" enctype="multipart/form-data">
+
+            <div class="stepper-step" data-step>
+              <h3>What would you like to order?</h3>
+              <p class="section-sub">Pick everything that applies.</p>
+              <fieldset style="border:none; padding:0; margin:0 0 1.35rem;">
+                <legend class="sr-only">What would you like to order?</legend>
+                <div class="check-grid">
+                  <label class="check-option"><input type="checkbox" name="items" value="Sourdough Loaves"> Sourdough Loaves</label>
+                  <label class="check-option"><input type="checkbox" name="items" value="Cookies &amp; Cookie Sandwiches"> Cookies &amp; Cookie Sandwiches</label>
+                  <label class="check-option"><input type="checkbox" name="items" value="Scones"> Scones</label>
+                  <label class="check-option"><input type="checkbox" name="items" value="Brownies, Dot Cakes &amp; More"> Brownies, Dot Cakes &amp; More</label>
+                  <label class="check-option"><input type="checkbox" name="items" value="Monthly Subscription Box"> Monthly Subscription Box</label>
+                  <label class="check-option"><input type="checkbox" name="items" value="Something custom / not sure yet"> Something custom / not sure yet</label>
+                </div>
+              </fieldset>
+              <div class="stepper-nav">
+                <span></span>
+                <button type="button" class="btn btn-primary" data-next>Next</button>
+              </div>
+            </div>
+
+            <div class="stepper-step" data-step hidden>
+              <h3>When do you need it?</h3>
+              <p class="section-sub">Ballpark is fine — we'll confirm together.</p>
+              <div class="field-group">
+                <label for="needBy">Date needed</label>
+                <input type="date" id="needBy" name="needBy" required>
+              </div>
+              <div class="field-group">
+                <label for="quantity">How many, or what size?</label>
+                <input type="text" id="quantity" name="quantity" placeholder="e.g. 2 dozen cookies, 1 full sourdough loaf" required>
+              </div>
+              <div class="stepper-nav">
+                <button type="button" class="btn btn-outline" data-back>Back</button>
+                <button type="button" class="btn btn-primary" data-next>Next</button>
+              </div>
+            </div>
+
+            <div class="stepper-step" data-step hidden>
+              <h3>Tell us more</h3>
+              <p class="section-sub">Flavors, style, colors, anything you're picturing.</p>
+              <div class="field-group">
+                <label for="notes">Notes</label>
+                <textarea id="notes" name="notes" placeholder="Anything that helps us picture it"></textarea>
+              </div>
+              <div class="field-group">
+                <label for="inspiration">Inspiration photo <span class="field-hint">(optional)</span></label>
+                <input type="file" id="inspiration" name="inspiration" accept="image/*">
+              </div>
+              <div class="stepper-nav">
+                <button type="button" class="btn btn-outline" data-back>Back</button>
+                <button type="button" class="btn btn-primary" data-next>Next</button>
+              </div>
+            </div>
+
+            <div class="stepper-step" data-step hidden>
+              <h3>Your contact info</h3>
+              <div class="field-group">
+                <label for="orderName">Name</label>
+                <input type="text" id="orderName" name="name" required>
+              </div>
+              <div class="field-group">
+                <label for="orderPhone">Phone</label>
+                <input type="tel" id="orderPhone" name="phone" required>
+              </div>
+              <div class="field-group">
+                <label for="orderEmail">Email <span class="field-hint">(optional)</span></label>
+                <input type="email" id="orderEmail" name="email">
+              </div>
+              <div class="stepper-nav">
+                <button type="button" class="btn btn-outline" data-back>Back</button>
+                <button type="button" class="btn btn-primary" data-next>Review</button>
+              </div>
+            </div>
+
+            <div class="stepper-step" data-step hidden>
+              <h3>Review &amp; send</h3>
+              <dl class="review-summary" data-review-summary></dl>
+              <p class="stepper-note">
+                <span class="placeholder-tag">form isn't live yet</span><br>
+                This will message Rachel directly once connected — for now, please also
+                <a data-social="facebook" href="#" target="_blank" rel="noopener" hidden>message on Facebook</a>
+                or call/text to confirm your order.
+              </p>
+              <div class="stepper-nav">
+                <button type="button" class="btn btn-outline" data-back>Back</button>
+                <button type="submit" class="btn btn-primary">Send Inquiry</button>
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="wrap contact-grid">
       <div class="contact-info">
+        <p class="section-eyebrow">Prefer to Reach Out Directly?</p>
         <h2>Contact Info</h2>
         <dl>
           <dt>Message</dt>
@@ -102,10 +212,12 @@
           <dd><a data-cfg="contact.email" data-cfg-href="contact.email" href="mailto:">[Email]</a></dd>
         </dl>
 
-        <h2>Hours</h2>
+        <h2 style="margin-top:1.75rem;">Hours</h2>
         <ul class="hours-list" data-render="hours"></ul>
+      </div>
 
-        <h2 style="margin-top:1.75rem;">Find Us</h2>
+      <div>
+        <h2>Find Us</h2>
         <!--
           Keyless Google Maps embed — main.js builds the src from
           CONFIG.contact.address, so you don't need an API key or to touch
@@ -113,47 +225,22 @@
         -->
         <iframe class="map-embed" data-map loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
-
-      <div>
-        <h2>Send a Message <span class="placeholder-tag inline">form isn't live yet</span></h2>
-        <p class="section-sub">This form isn't connected yet — please use Facebook Messenger, call, or text for now.</p>
-        <!--
-          FORM SETUP: this points at Formspree (https://formspree.io) as a
-          no-backend form service. Create a free form there, replace
-          YOUR_FORM_ID below, and remove the placeholder-tag + notice above
-          once it's wired up and tested. Swap for any other form endpoint
-          the same way.
-        -->
-        <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-          <label for="name">Your name</label>
-          <input type="text" id="name" name="name" required>
-
-          <label for="phone">Phone number</label>
-          <input type="tel" id="phone" name="phone" required>
-
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" required>
-
-          <label for="message">Message</label>
-          <textarea id="message" name="message" rows="5" required></textarea>
-
-          <button type="submit" class="btn btn-primary btn-block">Send message</button>
-        </form>
-      </div>
-
     </div>
   </section>
 
 </main>
 
+<div class="mobile-cta-bar" id="mobileCtaBar" hidden>
+  <a data-social="facebook" href="#" target="_blank" rel="noopener" class="btn btn-outline" hidden>Message to Order</a>
+  <a href="#order-form" class="btn btn-primary">Custom Order</a>
+</div>
+
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-grid">
       <div>
-        <h3 data-cfg="business.name">[Business Name]</h3>
-        <p data-render="address">[Address]</p>
-        <p><a data-cfg="contact.phoneDisplay" data-cfg-href="contact.phoneHref" href="tel:">[Phone]</a></p>
-        <p><a data-cfg="contact.email" data-cfg-href="contact.email" href="mailto:">[Email]</a></p>
+        <p class="footer-brand" data-cfg="business.name">[Business Name]</p>
+        <p class="footer-tagline" data-cfg="business.tagline">[Tagline]</p>
         <div class="footer-social">
           <a data-social="facebook" href="#" aria-label="Facebook" hidden>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 8.5h2.5V5.2c-.4-.05-1.9-.2-3.6-.2-3.6 0-6 2.2-6 6.2v3.3H4.5V19h3.4v10h4.1V19h3.3l.5-4.5H12v-2.9c0-1.3.35-2.1 2.1-2.1Z" fill="currentColor"/></svg>
@@ -164,16 +251,18 @@
         </div>
       </div>
       <div>
-        <h3>Hours</h3>
-        <ul class="hours-list" data-render="hours"></ul>
+        <h3>Contact</h3>
+        <p data-render="address">[Address]</p>
+        <p><a data-cfg="contact.phoneDisplay" data-cfg-href="contact.phoneHref" href="tel:">[Phone]</a></p>
+        <p><a data-cfg="contact.email" data-cfg-href="contact.email" href="mailto:">[Email]</a></p>
       </div>
       <div>
         <h3>Quick Links</h3>
         <p><a href="index.html">Home</a></p>
-        <p><a href="services.html" data-cfg="labels.servicesNav">Services</a></p>
+        <p><a href="services.html" data-cfg="labels.servicesNav">Menu</a></p>
         <p><a href="about.html">About</a></p>
         <p><a href="reviews.html">Reviews</a></p>
-        <p><a href="contact.html">Contact</a></p>
+        <p><a href="contact.html">Custom Order</a></p>
       </div>
     </div>
     <div class="footer-bottom">

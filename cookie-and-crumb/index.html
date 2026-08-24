@@ -22,12 +22,12 @@
   change CONFIG.business.name or CONFIG.business.description, update the
   matching tags below to match — on every page. See README.md.
 -->
-<title>Cookie &amp; Crumb | Screven, GA</title>
-<meta name="description" content="Gourmet, made-from-scratch cookies, sourdough, and scones from a woman-owned cottage bakery in Screven, GA.">
+<title>Cookie &amp; Crumb | Small-Batch Cookies in Screven, GA</title>
+<meta name="description" content="Small-batch, made-from-scratch cookies, sourdough, and scones from a woman-owned cottage bakery in Screven, GA. Custom orders welcome.">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Cookie & Crumb | Screven, GA">
-<meta property="og:description" content="Gourmet, made-from-scratch cookies, sourdough, and scones from a woman-owned cottage bakery in Screven, GA.">
+<meta property="og:title" content="Cookie & Crumb | Small-Batch Cookies in Screven, GA">
+<meta property="og:description" content="Small-batch, made-from-scratch cookies, sourdough, and scones from a woman-owned cottage bakery in Screven, GA. Custom orders welcome.">
 <meta property="og:url" content="https://www.example.com/">
 <meta property="og:image" content="https://www.example.com/images/real/og-image.jpg">
 <meta property="og:image:width" content="1200">
@@ -43,7 +43,7 @@
   "@context": "https://schema.org",
   "@type": "Bakery",
   "name": "Cookie & Crumb",
-  "description": "Gourmet, made-from-scratch cookies, sourdough, and scones from a woman-owned cottage bakery in Screven, GA.",
+  "description": "Small-batch, made-from-scratch cookies, sourdough, and scones from a woman-owned cottage bakery in Screven, GA.",
   "url": "https://www.example.com/",
   "telephone": "+19122945498",
   "email": "cookieandcrumb2@gmail.com",
@@ -60,10 +60,10 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="hero-page">
 
 <a class="skip-link" href="#main">Skip to content</a>
 
@@ -76,82 +76,131 @@
     </button>
     <nav class="primary-nav" id="primaryNav">
       <a href="index.html" aria-current="page">Home</a>
-      <a href="services.html" data-cfg="labels.servicesNav">Services</a>
+      <a href="services.html" data-cfg="labels.servicesNav">Menu</a>
       <a href="about.html">About</a>
       <a href="reviews.html">Reviews</a>
-      <a href="contact.html" class="nav-cta">Contact</a>
+      <a href="contact.html" class="nav-cta">Custom Order</a>
     </nav>
   </div>
 </header>
 
 <main id="main">
 
-  <!-- ============ HERO ============ -->
+  <!-- ============ CINEMATIC HERO ============ -->
   <section class="hero">
-    <div class="wrap hero-inner">
-      <div class="hero-copy">
-        <h1 data-cfg="hero.heading">[Hero headline — what the business does, in plain language]</h1>
-        <p class="hero-sub" data-cfg="hero.subheading">[One supporting sentence — who it's for, or what makes it different]</p>
-        <div class="hero-actions">
-          <a href="contact.html" class="btn btn-primary">Get in touch</a>
-          <a href="services.html" class="btn btn-outline">See <span data-cfg="labels.servicesNav">services</span></a>
-        </div>
-        <div class="hero-social" data-social-group>
-          <span>Follow along:</span>
-          <a data-social="facebook" href="#" aria-label="Facebook" hidden>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 8.5h2.5V5.2c-.4-.05-1.9-.2-3.6-.2-3.6 0-6 2.2-6 6.2v3.3H4.5V19h3.4v10h4.1V19h3.3l.5-4.5H12v-2.9c0-1.3.35-2.1 2.1-2.1Z" fill="currentColor"/></svg>
-          </a>
-          <a data-social="instagram" href="#" aria-label="Instagram" hidden>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor"/></svg>
-          </a>
-        </div>
+    <img class="hero-bg" data-cfg-src="hero.photo" data-cfg-alt="hero.photoAlt" src="images/placeholder-wide.svg" alt="Photo placeholder">
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="wrap hero-content">
+      <p class="hero-eyebrow" data-cfg="hero.eyebrow">[Location]</p>
+      <h1 data-cfg="hero.heading">[Hero headline]</h1>
+      <p class="hero-sub" data-cfg="hero.subheading">[Hero subheading]</p>
+      <div class="hero-actions">
+        <a href="services.html" class="btn btn-primary">Shop Cookies</a>
+        <a href="contact.html" class="btn btn-ghost">Custom Orders</a>
       </div>
-      <div class="hero-photo">
-        <img data-cfg-src="hero.photo" data-cfg-alt="hero.photoAlt" src="images/placeholder-wide.svg" alt="Photo placeholder">
+      <div class="hero-social" data-social-group>
+        <span>Follow along:</span>
+        <a data-social="facebook" href="#" aria-label="Facebook" hidden>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 8.5h2.5V5.2c-.4-.05-1.9-.2-3.6-.2-3.6 0-6 2.2-6 6.2v3.3H4.5V19h3.4v10h4.1V19h3.3l.5-4.5H12v-2.9c0-1.3.35-2.1 2.1-2.1Z" fill="currentColor"/></svg>
+        </a>
+        <a data-social="instagram" href="#" aria-label="Instagram" hidden>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor"/></svg>
+        </a>
       </div>
     </div>
+    <a class="scroll-indicator" href="#signature" aria-label="Scroll to see signature cookies">
+      <span>Explore</span>
+      <svg width="16" height="24" viewBox="0 0 16 24" fill="none" aria-hidden="true"><path d="M8 1v20M2 15l6 6 6-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
   </section>
 
-  <!-- ============ SERVICES PREVIEW ============ -->
-  <section>
+  <!-- ============ SIGNATURE PRODUCTS ============ -->
+  <section id="signature">
     <div class="wrap">
-      <h2 data-cfg="labels.servicesHeading">Our Services</h2>
-      <!-- data-render="services" is filled in by main.js from CONFIG.services -->
-      <div class="card-grid cols-3" data-render="services" data-limit="3"></div>
-      <p><a href="services.html">See all <span data-cfg="labels.servicesNav">services</span> &rarr;</a></p>
+      <div class="section-head">
+        <p class="section-eyebrow">Signature</p>
+        <h2>What Rachel's known for</h2>
+        <p class="section-sub">A few standouts from a much longer list — see everything on the full menu.</p>
+      </div>
+      <!-- data-render="signature" is filled in by main.js from CONFIG.signature -->
+      <div class="feature-list" data-render="signature"></div>
     </div>
   </section>
 
-  <!-- ============ TESTIMONIALS PREVIEW ============ -->
-  <section>
-    <div class="wrap">
-      <h2>What people are saying</h2>
-      <!-- shows only the first 2 of CONFIG.testimonials; full list lives on reviews.html -->
-      <div class="card-grid" data-render="testimonials" data-limit="2"></div>
-      <p><a href="reviews.html">Read more reviews &rarr;</a></p>
+  <!-- ============ CUSTOM ORDERS ============ -->
+  <section class="custom-orders">
+    <div class="wrap custom-orders-inner">
+      <div>
+        <p class="section-eyebrow">Custom Orders</p>
+        <h2 data-cfg="customOrders.heading">[Custom orders heading]</h2>
+        <p data-cfg="customOrders.body">[Custom orders body]</p>
+        <div class="custom-orders-actions">
+          <a href="contact.html" class="btn btn-primary">Start a Custom Order</a>
+          <a data-social="facebook" href="#" target="_blank" rel="noopener" class="btn btn-ghost" hidden>Message on Facebook</a>
+        </div>
+      </div>
+      <div class="feature-media">
+        <img src="images/real/packaged-cookies-trio.jpg" alt="Individually wrapped Cookie & Crumb cookies with cottage food labels, ready for pickup" loading="lazy">
+      </div>
     </div>
   </section>
 
-  <!-- ============ CTA BANNER ============ -->
-  <section class="cta-section">
+  <!-- ============ TESTIMONIAL ============ -->
+  <section>
     <div class="wrap">
-      <h2>Ready to get started?</h2>
-      <p class="section-sub" style="margin-left: auto; margin-right: auto;">Reach out and we'll get back to you as soon as we can.</p>
-      <a href="contact.html" class="btn btn-primary">Contact us</a>
+      <div class="section-head center">
+        <p class="section-eyebrow">Word Around Town</p>
+        <h2>What people are saying</h2>
+      </div>
+      <div class="testimonial-feature" data-render="testimonials" data-limit="1"></div>
+      <div class="section-head center" style="margin-top: 2.5rem; margin-bottom: 0;">
+        <a href="reviews.html" class="feature-link">See what our customers are saying &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SOCIAL / PHOTO GALLERY ============ -->
+  <section class="gallery-section" data-gallery-section>
+    <div class="wrap">
+      <div class="section-head center">
+        <p class="section-eyebrow">From the Kitchen</p>
+        <h2>Follow along</h2>
+        <p class="section-sub">A look at what's coming out of the oven lately.</p>
+      </div>
+      <div class="gallery-grid" data-render="gallery"></div>
+    </div>
+  </section>
+
+  <!-- ============ LOCAL TRUST / LOCATION ============ -->
+  <section>
+    <div class="wrap contact-grid">
+      <div class="contact-info">
+        <p class="section-eyebrow">Good to Know</p>
+        <h2>Ordering &amp; pickup</h2>
+        <p class="section-sub">Cookie & Crumb bakes to order out of a home kitchen in Screven, GA — no storefront, but a few real ways to find or reach us.</p>
+        <ul class="hours-list" data-render="hours"></ul>
+      </div>
+      <div>
+        <iframe class="map-embed" data-map loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
     </div>
   </section>
 
 </main>
+
+<!-- Sticky mobile order bar — shown/hidden by main.js; empty href targets filled from CONFIG -->
+<div class="mobile-cta-bar" id="mobileCtaBar" hidden>
+  <a data-social="facebook" href="#" target="_blank" rel="noopener" class="btn btn-outline" hidden>Message to Order</a>
+  <a href="contact.html" class="btn btn-primary">Custom Order</a>
+</div>
 
 <!-- #include: footer.html (see README.md — repeated by hand on every page, no build step) -->
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-grid">
       <div>
-        <h3 data-cfg="business.name">[Business Name]</h3>
-        <p data-render="address">[Address]</p>
-        <p><a data-cfg="contact.phoneDisplay" data-cfg-href="contact.phoneHref" href="tel:">[Phone]</a></p>
-        <p><a data-cfg="contact.email" data-cfg-href="contact.email" href="mailto:">[Email]</a></p>
+        <p class="footer-brand" data-cfg="business.name">[Business Name]</p>
+        <p class="footer-tagline" data-cfg="business.tagline">[Tagline]</p>
         <div class="footer-social">
           <a data-social="facebook" href="#" aria-label="Facebook" hidden>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 8.5h2.5V5.2c-.4-.05-1.9-.2-3.6-.2-3.6 0-6 2.2-6 6.2v3.3H4.5V19h3.4v10h4.1V19h3.3l.5-4.5H12v-2.9c0-1.3.35-2.1 2.1-2.1Z" fill="currentColor"/></svg>
@@ -162,16 +211,18 @@
         </div>
       </div>
       <div>
-        <h3>Hours</h3>
-        <ul class="hours-list" data-render="hours"></ul>
+        <h3>Contact</h3>
+        <p data-render="address">[Address]</p>
+        <p><a data-cfg="contact.phoneDisplay" data-cfg-href="contact.phoneHref" href="tel:">[Phone]</a></p>
+        <p><a data-cfg="contact.email" data-cfg-href="contact.email" href="mailto:">[Email]</a></p>
       </div>
       <div>
         <h3>Quick Links</h3>
         <p><a href="index.html">Home</a></p>
-        <p><a href="services.html" data-cfg="labels.servicesNav">Services</a></p>
+        <p><a href="services.html" data-cfg="labels.servicesNav">Menu</a></p>
         <p><a href="about.html">About</a></p>
         <p><a href="reviews.html">Reviews</a></p>
-        <p><a href="contact.html">Contact</a></p>
+        <p><a href="contact.html">Custom Order</a></p>
       </div>
     </div>
     <div class="footer-bottom">

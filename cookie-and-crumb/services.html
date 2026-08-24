@@ -2,11 +2,6 @@
 <html lang="en">
 <head>
 <script>
-  // Adds .js-motion to <html> ONLY when JS runs and the visitor hasn't
-  // asked for reduced motion. Scroll-reveal CSS in style.css is scoped to
-  // .js-motion, so with JS off or motion reduced, everything just renders
-  // normally — nothing can get stuck hidden. Inline + synchronous so it
-  // runs before first paint (no flash of content popping in).
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     document.documentElement.classList.add('js-motion');
   }
@@ -16,11 +11,11 @@
 
 <!-- SEO NOTE: keep in sync with config.js by hand — see index.html for why -->
 <title>Menu | Cookie &amp; Crumb</title>
-<meta name="description" content="Sourdough loaves, gourmet cookies, scones, and more from Cookie & Crumb — a made-from-scratch cottage bakery in Screven, GA.">
+<meta name="description" content="The full Cookie & Crumb menu — sourdough loaves, cookies and cookie sandwiches, scones, brownies, dot cakes, and a monthly subscription box. Screven, GA.">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Menu | Cookie & Crumb">
-<meta property="og:description" content="Sourdough loaves, gourmet cookies, scones, and more from Cookie & Crumb — a made-from-scratch cottage bakery in Screven, GA.">
+<meta property="og:description" content="The full Cookie & Crumb menu — sourdough loaves, cookies and cookie sandwiches, scones, brownies, dot cakes, and a monthly subscription box.">
 <meta property="og:url" content="https://www.example.com/services.html">
 <meta property="og:image" content="https://www.example.com/images/real/og-image.jpg">
 <meta property="og:image:width" content="1200">
@@ -36,7 +31,7 @@
   "@context": "https://schema.org",
   "@type": "Bakery",
   "name": "Cookie & Crumb",
-  "description": "Gourmet, made-from-scratch cookies, sourdough, and scones from a woman-owned cottage bakery in Screven, GA.",
+  "description": "Small-batch, made-from-scratch cookies, sourdough, and scones from a woman-owned cottage bakery in Screven, GA.",
   "url": "https://www.example.com/",
   "telephone": "+19122945498",
   "email": "cookieandcrumb2@gmail.com",
@@ -53,7 +48,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -69,10 +64,10 @@
     </button>
     <nav class="primary-nav" id="primaryNav">
       <a href="index.html">Home</a>
-      <a href="services.html" aria-current="page" data-cfg="labels.servicesNav">Services</a>
+      <a href="services.html" data-cfg="labels.servicesNav" aria-current="page">Menu</a>
       <a href="about.html">About</a>
       <a href="reviews.html">Reviews</a>
-      <a href="contact.html" class="nav-cta">Contact</a>
+      <a href="contact.html" class="nav-cta">Custom Order</a>
     </nav>
   </div>
 </header>
@@ -81,35 +76,41 @@
 
   <div class="page-header">
     <div class="wrap">
-      <h1 data-cfg="labels.servicesHeading">Our Services</h1>
-      <p class="section-sub" style="margin-left:auto;margin-right:auto;" data-cfg="business.description">[One or two sentences describing the business.]</p>
+      <p class="section-eyebrow">The Full Menu</p>
+      <h1 data-cfg="labels.servicesHeading">Our Menu</h1>
+      <p class="section-sub" style="margin-left:auto;margin-right:auto;">Everything's baked to order in small batches — no set pricing list, just message, call, or text with what you're after.</p>
     </div>
   </div>
 
   <section>
     <div class="wrap">
-      <!-- Full CONFIG.services list — no data-limit means "show everything" -->
+      <!-- data-render="services" is filled in by main.js from CONFIG.services -->
       <div class="card-grid cols-3" data-render="services"></div>
     </div>
   </section>
 
-  <section class="cta-section">
-    <div class="wrap">
-      <h2>Questions about pricing or availability?</h2>
-      <a href="contact.html" class="btn btn-primary">Get in touch</a>
+  <section class="custom-orders">
+    <div class="wrap" style="text-align:center;">
+      <p class="section-eyebrow">Don't See What You're After?</p>
+      <h2 data-cfg="customOrders.heading">[Custom orders heading]</h2>
+      <p data-cfg="customOrders.body" style="margin-left:auto;margin-right:auto;">[Custom orders body]</p>
+      <a href="contact.html" class="btn btn-primary" style="margin-top:0.75rem;">Start a Custom Order</a>
     </div>
   </section>
 
 </main>
 
+<div class="mobile-cta-bar" id="mobileCtaBar" hidden>
+  <a data-social="facebook" href="#" target="_blank" rel="noopener" class="btn btn-outline" hidden>Message to Order</a>
+  <a href="contact.html" class="btn btn-primary">Custom Order</a>
+</div>
+
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-grid">
       <div>
-        <h3 data-cfg="business.name">[Business Name]</h3>
-        <p data-render="address">[Address]</p>
-        <p><a data-cfg="contact.phoneDisplay" data-cfg-href="contact.phoneHref" href="tel:">[Phone]</a></p>
-        <p><a data-cfg="contact.email" data-cfg-href="contact.email" href="mailto:">[Email]</a></p>
+        <p class="footer-brand" data-cfg="business.name">[Business Name]</p>
+        <p class="footer-tagline" data-cfg="business.tagline">[Tagline]</p>
         <div class="footer-social">
           <a data-social="facebook" href="#" aria-label="Facebook" hidden>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 8.5h2.5V5.2c-.4-.05-1.9-.2-3.6-.2-3.6 0-6 2.2-6 6.2v3.3H4.5V19h3.4v10h4.1V19h3.3l.5-4.5H12v-2.9c0-1.3.35-2.1 2.1-2.1Z" fill="currentColor"/></svg>
@@ -120,16 +121,18 @@
         </div>
       </div>
       <div>
-        <h3>Hours</h3>
-        <ul class="hours-list" data-render="hours"></ul>
+        <h3>Contact</h3>
+        <p data-render="address">[Address]</p>
+        <p><a data-cfg="contact.phoneDisplay" data-cfg-href="contact.phoneHref" href="tel:">[Phone]</a></p>
+        <p><a data-cfg="contact.email" data-cfg-href="contact.email" href="mailto:">[Email]</a></p>
       </div>
       <div>
         <h3>Quick Links</h3>
         <p><a href="index.html">Home</a></p>
-        <p><a href="services.html" data-cfg="labels.servicesNav">Services</a></p>
+        <p><a href="services.html" data-cfg="labels.servicesNav">Menu</a></p>
         <p><a href="about.html">About</a></p>
         <p><a href="reviews.html">Reviews</a></p>
-        <p><a href="contact.html">Contact</a></p>
+        <p><a href="contact.html">Custom Order</a></p>
       </div>
     </div>
     <div class="footer-bottom">
