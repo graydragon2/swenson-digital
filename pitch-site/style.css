@@ -285,6 +285,14 @@ body.hero-page { padding-top: 0; }
   border-bottom: 1px solid var(--border);
   box-shadow: var(--shadow-md);
 }
+/* The open dropdown always has an opaque cream background, even when the
+   header itself is still in its transparent-over-hero state — so its
+   links need to stay dark regardless. Without this, opening the mobile
+   menu on the home page left white-on-cream text that was nearly
+   unreadable (the bug in the screenshot). */
+body.hero-page .site-header.nav-open .primary-nav a:not(.nav-cta) {
+  color: var(--ink);
+}
 
 @media (min-width: 860px) {
   .nav-toggle { display: none; }
