@@ -90,9 +90,14 @@
   <section class="hero">
     <img class="hero-bg" data-cfg-src="hero.photo" data-cfg-alt="hero.photoAlt" src="images/placeholder-wide.svg" alt="Photo placeholder">
     <div class="hero-scrim" aria-hidden="true"></div>
+    <span class="hero-stamp" aria-hidden="true">Small&nbsp;Batch<br>Baked&nbsp;Fresh</span>
     <div class="wrap hero-content">
       <p class="hero-eyebrow" data-cfg="hero.eyebrow">[Location]</p>
-      <h1 data-cfg="hero.heading">[Hero headline]</h1>
+      <!-- Hand-edited, not data-cfg bound: the emphasis on "cravings" needs
+           real markup, which a plain data-cfg text swap would wipe out.
+           Keep this in sync with CONFIG.hero.heading in config.js by hand
+           if the headline ever changes — see README "What CONFIG can't do". -->
+      <h1>Small batches. Big <em>cravings</em>.</h1>
       <p class="hero-sub" data-cfg="hero.subheading">[Hero subheading]</p>
       <div class="hero-actions">
         <a href="services.html" class="btn btn-primary">Shop Cookies</a>

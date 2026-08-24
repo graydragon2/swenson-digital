@@ -55,7 +55,7 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="hero-page">
 
 <a class="skip-link" href="#main">Skip to content</a>
 
@@ -90,47 +90,21 @@
 
   <!-- ============ HERO ============ -->
   <section class="hero">
+    <div class="hero-spotlight" aria-hidden="true"></div>
     <div class="wrap hero-inner">
       <div class="hero-copy">
-        <p class="eyebrow">Serving Wayne County, GA &amp; Surrounding Areas</p>
-        <h1>Your business belongs online. I'll put it there — and keep it there.</h1>
-        <p class="hero-sub">For small businesses in Wayne County, Georgia and the surrounding area with no website, an outdated one, or no real social media presence — I build it, host it, and keep it running so you don't have to think about it.</p>
+        <p class="hero-badge">📍 Wayne County, GA &amp; surrounding areas</p>
+        <h1>Your business belongs <em>online</em>. I'll put it there — and keep it there.</h1>
+        <p class="hero-sub">No website, an outdated one, or no real social media presence? I build it, host it, and keep it running — so you don't have to think about it.</p>
         <div class="hero-actions">
           <a href="tel:+19124248310" class="btn btn-primary">Call or Text (912) 424-8310</a>
           <a href="contact.html" class="btn btn-ghost">Get a Free Site Review</a>
         </div>
-      </div>
-      <div class="hero-art" aria-hidden="true">
-        <svg viewBox="0 0 480 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
-          <ellipse cx="240" cy="370" rx="220" ry="18" fill="#e3d9c4"/>
-          <!-- pine trees -->
-          <g>
-            <rect x="66" y="240" width="8" height="60" fill="#7a6a4a"/>
-            <path d="M70 120 30 220h80Z" fill="#1f3d2e"/>
-            <path d="M70 160 38 240h64Z" fill="#274c39"/>
-            <path d="M70 195 46 260h48Z" fill="#2d5240"/>
-          </g>
-          <g>
-            <rect x="126" y="255" width="7" height="45" fill="#7a6a4a"/>
-            <path d="M129.5 165 96 250h67Z" fill="#1f3d2e"/>
-            <path d="M129.5 200 104 260h51Z" fill="#274c39"/>
-          </g>
-          <!-- small storefront -->
-          <g>
-            <rect x="200" y="210" width="220" height="130" rx="4" fill="#faf5ea" stroke="#c9bb98" stroke-width="2"/>
-            <rect x="200" y="210" width="220" height="34" fill="#1f3d2e"/>
-            <rect x="196" y="196" width="228" height="20" rx="3" fill="#c1622d"/>
-            <rect x="222" y="260" width="60" height="80" fill="#274c39"/>
-            <rect x="222" y="260" width="60" height="80" fill="none" stroke="#16291e" stroke-width="2"/>
-            <circle cx="272" cy="300" r="2.5" fill="#f0e6d2"/>
-            <rect x="304" y="260" width="46" height="46" fill="#eaf1ec" stroke="#16291e" stroke-width="2"/>
-            <line x1="327" y1="260" x2="327" y2="306" stroke="#16291e" stroke-width="1.5"/>
-            <line x1="304" y1="283" x2="350" y2="283" stroke="#16291e" stroke-width="1.5"/>
-            <rect x="366" y="260" width="46" height="46" fill="#eaf1ec" stroke="#16291e" stroke-width="2"/>
-            <line x1="389" y1="260" x2="389" y2="306" stroke="#16291e" stroke-width="1.5"/>
-            <line x1="366" y1="283" x2="412" y2="283" stroke="#16291e" stroke-width="1.5"/>
-          </g>
-        </svg>
+        <div class="hero-trust">
+          <span class="hero-trust-item"><strong>One person.</strong> No agency, no account managers.</span>
+          <span class="hero-trust-item"><strong>No contracts.</strong> Cancel the monthly piece anytime.</span>
+          <span class="hero-trust-item"><strong>Plain pricing.</strong> No "starting at" games.</span>
+        </div>
       </div>
     </div>
   </section>
@@ -153,33 +127,33 @@
     <div class="wrap">
       <h2>What I do</h2>
       <p class="section-sub">Pick one, or let me handle both.</p>
-      <div class="card-grid">
+      <ol class="service-list">
 
-        <article class="service-card">
-          <span class="icon-badge" aria-hidden="true">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M3 12h18M12 3c2.5 2.6 4 5.7 4 9s-1.5 6.4-4 9c-2.5-2.6-4-5.7-4-9s1.5-6.4 4-9Z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/></svg>
-          </span>
-          <h3>Website</h3>
-          <p>Built, hosted, and kept updated — no CMS headaches for you.</p>
-        </article>
+        <li class="service-row">
+          <span class="service-num">01</span>
+          <div class="service-row-body">
+            <h3>Website</h3>
+            <p>Built, hosted, and kept updated — no CMS headaches for you.</p>
+          </div>
+        </li>
 
-        <article class="service-card">
-          <span class="icon-badge" aria-hidden="true">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="4" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor"/></svg>
-          </span>
-          <h3>Social Media Management</h3>
-          <p>Regular posts and real photos, so you show up consistently.</p>
-        </article>
+        <li class="service-row">
+          <span class="service-num">02</span>
+          <div class="service-row-body">
+            <h3>Social Media Management</h3>
+            <p>Regular posts and real photos, so you show up consistently.</p>
+          </div>
+        </li>
 
-        <article class="service-card">
-          <span class="icon-badge" aria-hidden="true">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M4 19V9l8-5 8 5v10" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 19v-7h6v7" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-          </span>
-          <h3>Website + Social</h3>
-          <p>The "just handle it" package — one business, one look, everywhere.</p>
-        </article>
+        <li class="service-row">
+          <span class="service-num">03</span>
+          <div class="service-row-body">
+            <h3>Website + Social</h3>
+            <p>The "just handle it" package — one business, one look, everywhere.</p>
+          </div>
+        </li>
 
-      </div>
+      </ol>
       <p style="margin-top: 1.5rem;"><a href="services.html">See how each one works &rarr;</a></p>
     </div>
   </section>

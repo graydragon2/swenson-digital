@@ -346,6 +346,38 @@ body.hero-page { padding-top: 0; }
   max-width: 15ch;
   margin-bottom: 0.5rem;
 }
+.hero h1 em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+/* A hand-stamped "Small Batch / Baked Fresh" badge, angled like a real
+   stamp on a bakery box — the kind of charming, specific detail that
+   reads as a real brand rather than a generic template. */
+.hero-stamp {
+  position: absolute;
+  z-index: 2;
+  top: clamp(5.5rem, 14vw, 7.5rem);
+  right: clamp(1.25rem, 4vw, 3rem);
+  width: 108px;
+  height: 108px;
+  border-radius: 50%;
+  border: 2px dashed rgba(255, 253, 248, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.92rem;
+  line-height: 1.35;
+  color: var(--cream);
+  transform: rotate(9deg);
+  padding: 0.5rem;
+}
+@media (max-width: 640px) {
+  .hero-stamp { width: 84px; height: 84px; font-size: 0.72rem; top: 5.5rem; right: 1rem; }
+}
 .hero-sub {
   color: rgba(255, 253, 248, 0.88);
   font-size: 1.15rem;
@@ -497,19 +529,17 @@ body.hero-page { padding-top: 0; }
   border-color: var(--caramel);
 }
 
+/* No circle-badge container — that's the "generic template icon" tell.
+   Just the mark itself, bigger, sitting loose above the heading. */
 .service-item .icon-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: var(--surface);
-  font-size: 1.4rem;
-  margin-bottom: 1rem;
+  display: block;
+  font-size: 2.1rem;
+  line-height: 1;
+  margin-bottom: 0.9rem;
+  transform-origin: left center;
   transition: transform 0.25s ease;
 }
-.service-item:hover .icon-badge { transform: scale(1.08) rotate(-3deg); }
+.service-item:hover .icon-badge { transform: scale(1.12) rotate(-6deg); }
 .service-item h3 { font-size: 1.25rem; margin-bottom: 0.4rem; }
 .service-item p { color: var(--text-light); }
 
