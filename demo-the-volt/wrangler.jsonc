@@ -1,0 +1,11 @@
+{
+  // Cloudflare Workers config for deploying The Volt (concept demo) as
+  // static assets. This is a separate Cloudflare project from the other
+  // sites — set "Root directory" to "demo-the-volt" when creating the
+  // project so this file (and the paths in it) resolve correctly.
+  "name": "the-volt-demo",
+  "compatibility_date": "2026-08-11",
+  "assets": {
+    "directory": "."
+  }
+}

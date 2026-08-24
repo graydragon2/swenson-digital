@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.documentElement.classList.add('js-motion');
+  }
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Volt — Live Music Hall (Concept Demo)</title>
+<meta name="description" content="Concept demo site built by Swenson Digital — a fictional live music venue, showcasing motion, canvas graphics, and interaction design.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="preloader" aria-hidden="true">
+  <p class="preloader-mark">THE <span>VOLT</span></p>
+  <div class="preloader-bar"></div>
+</div>
+
+<svg class="grain" aria-hidden="true">
+  <filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/></filter>
+  <rect width="100%" height="100%" filter="url(#noise)"/>
+</svg>
+
+<div class="scroll-progress" aria-hidden="true"></div>
+<div class="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"></div>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="index.html">THE <span class="logo-bolt">VOLT</span></a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryNav">
+      <span></span><span></span><span></span>
+      <span class="sr-only">Menu</span>
+    </button>
+    <nav class="primary-nav" id="primaryNav">
+      <a href="#shows">Shows</a>
+      <a href="#venue">Venue</a>
+      <a href="#book" class="nav-cta">Book the Space</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <canvas class="hero-canvas" aria-hidden="true"></canvas>
+    <div class="hero-vignette" aria-hidden="true"></div>
+    <div class="wrap hero-inner">
+      <p class="hero-tag"><span class="dot"></span> Concept demo &middot; built by Swenson Digital</p>
+      <h1>
+        <span class="line">Live music,</span>
+        <span class="line"><span class="accent">full</span> voltage.</span>
+      </h1>
+      <p class="hero-sub">A 1,200-cap room with a sound system that hits right and a stage that's hosted everything from garage punk to string quartets. Doors open, volume up.</p>
+      <div class="hero-actions">
+        <a href="#shows" class="btn btn-primary">See Upcoming Shows</a>
+        <a href="#book" class="btn btn-ghost">Book the Space</a>
+      </div>
+    </div>
+    <div class="hero-scroll-cue" aria-hidden="true">
+      <span>Scroll</span>
+      <span class="cue-line"></span>
+    </div>
+  </section>
+
+  <div class="marquee-band">
+    <div class="marquee-track" aria-hidden="true">
+      <span>Sold-Out Shows</span><span>38ft Ceilings</span><span>Full Bar</span><span>Local &amp; Touring Acts</span><span>All Ages Til 9</span><span>Sold-Out Shows</span><span>38ft Ceilings</span><span>Full Bar</span><span>Local &amp; Touring Acts</span><span>All Ages Til 9</span>
+    </div>
+  </div>
+
+  <!-- ============ STATS ============ -->
+  <section class="stats">
+    <div class="wrap">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <span class="stat-num" data-count-to="412">0</span>
+          <span class="stat-label">Shows Played</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num" data-count-to="1200">0</span>
+          <span class="stat-label">Room Capacity</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num" data-count-to="38" data-suffix="k">0</span>
+          <span class="stat-label">Sq. Ft. Venue</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num" data-count-to="49" data-suffix="/10">0</span>
+          <span class="stat-label">Avg. Rating</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SHOWS ============ -->
+  <section id="shows">
+    <div class="wrap">
+      <div class="shows-head">
+        <div>
+          <p class="eyebrow">Upcoming</p>
+          <h2>On the calendar</h2>
+        </div>
+        <p class="section-sub">New shows added weekly. Doors at 7, most nights all ages until 9.</p>
+      </div>
+      <div class="show-list">
+        <a class="show-row" href="#book" style="--swatch: linear-gradient(135deg, #e4ff3d, #8b5cf6);">
+          <span class="show-date">Sep<strong>12</strong></span>
+          <span class="show-swatch" aria-hidden="true"></span>
+          <span class="show-info">
+            <h3>Radio Static &amp; the Coyotes</h3>
+            <p>Alt-country, four-piece, first time through Georgia</p>
+          </span>
+          <span class="show-link">Details &rarr;</span>
+        </a>
+        <a class="show-row" href="#book" style="--swatch: linear-gradient(135deg, #ff2ec4, #e4ff3d);">
+          <span class="show-date">Sep<strong>19</strong></span>
+          <span class="show-swatch" aria-hidden="true"></span>
+          <span class="show-info">
+            <h3>Marlowe Bend</h3>
+            <p>Indie rock trio, sophomore album release show</p>
+          </span>
+          <span class="show-link">Details &rarr;</span>
+        </a>
+        <a class="show-row" href="#book" style="--swatch: linear-gradient(135deg, #8b5cf6, #ff2ec4);">
+          <span class="show-date">Oct<strong>03</strong></span>
+          <span class="show-swatch" aria-hidden="true"></span>
+          <span class="show-info">
+            <h3>The Low Volt Quartet</h3>
+            <p>Instrumental jazz, house band, first Friday residency</p>
+          </span>
+          <span class="show-link">Details &rarr;</span>
+        </a>
+        <a class="show-row" href="#book" style="--swatch: linear-gradient(135deg, #e4ff3d, #ff2ec4);">
+          <span class="show-date">Oct<strong>17</strong></span>
+          <span class="show-swatch" aria-hidden="true"></span>
+          <span class="show-info">
+            <h3>Palefire</h3>
+            <p>Garage punk, all ages, expect a mosh pit</p>
+          </span>
+          <span class="show-link">Details &rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VENUE ============ -->
+  <section id="venue">
+    <div class="wrap venue">
+      <div class="venue-art" aria-hidden="true">
+        <svg class="layer-back" viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="200" cy="150" r="120" stroke="#e4ff3d" stroke-opacity="0.25" stroke-width="1.5"/>
+          <circle cx="200" cy="150" r="160" stroke="#ff2ec4" stroke-opacity="0.18" stroke-width="1.5"/>
+        </svg>
+        <svg class="layer-front" viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="90" y="330" width="220" height="90" rx="6" fill="#18171d" stroke="#f6f4ef" stroke-opacity="0.12"/>
+          <rect x="110" y="350" width="40" height="50" rx="4" fill="#e4ff3d" fill-opacity="0.8"/>
+          <rect x="230" y="350" width="40" height="50" rx="4" fill="#ff2ec4" fill-opacity="0.8"/>
+          <path d="M170 350 L200 300 L230 350 Z" fill="#f6f4ef" fill-opacity="0.9"/>
+          <line x1="200" y1="300" x2="200" y2="260" stroke="#f6f4ef" stroke-opacity="0.4" stroke-width="2"/>
+        </svg>
+      </div>
+      <div class="venue-copy">
+        <p class="eyebrow">The Room</p>
+        <h2>Built for sound, not for show</h2>
+        <p>A converted freight warehouse with 38-foot ceilings, a line-array system tuned for the room instead of dropped in from a rental catalog, and a stage big enough for a six-piece without anyone stepping on a pedalboard.</p>
+        <ul>
+          <li>Full line-array sound system, tuned monthly</li>
+          <li>Stage depth built for full bands, not solo acts squeezed into a corner</li>
+          <li>Full bar, craft cocktails, local beer on tap</li>
+          <li>Green room, load-in dock, on-site sound engineer</li>
+        </ul>
+        <a href="#book" class="btn btn-ghost">Ask About Booking</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee-band alt">
+    <div class="marquee-track" aria-hidden="true">
+      <span>Book the Room</span><span>Private Events</span><span>Full Production</span><span>Book the Room</span><span>Private Events</span><span>Full Production</span>
+    </div>
+  </div>
+
+  <!-- ============ TESTIMONIALS ============ -->
+  <section class="testimonial-band">
+    <div class="wrap" style="margin-bottom: 2rem;">
+      <p class="eyebrow">What people say</p>
+      <h2>From the folks who've played here</h2>
+    </div>
+    <div class="testimonial-track">
+      <article class="testimonial-card">
+        <p>"Best sound I've heard in a room that size, full stop. The engineer knew our set before we finished soundcheck."</p>
+        <footer><strong>Radio Static &amp; the Coyotes</strong> &middot; touring act</footer>
+      </article>
+      <article class="testimonial-card">
+        <p>"We've played rooms twice the size with half the energy. This place just works."</p>
+        <footer><strong>Marlowe Bend</strong> &middot; local act</footer>
+      </article>
+      <article class="testimonial-card">
+        <p>"Booked it for a private release party. Load-in was easy, staff was easy, the night was not easy to forget."</p>
+        <footer><strong>Local label showcase</strong> &middot; private event</footer>
+      </article>
+      <article class="testimonial-card">
+        <p>"Best sound I've heard in a room that size, full stop. The engineer knew our set before we finished soundcheck."</p>
+        <footer><strong>Radio Static &amp; the Coyotes</strong> &middot; touring act</footer>
+      </article>
+      <article class="testimonial-card">
+        <p>"We've played rooms twice the size with half the energy. This place just works."</p>
+        <footer><strong>Marlowe Bend</strong> &middot; local act</footer>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="cta-band">
+    <div class="wrap">
+      <p class="eyebrow" style="justify-content:center;">Ready when you are</p>
+      <h2>Bring the noise.</h2>
+      <p class="section-sub">Whether it's a touring band, a private party, or a release show — the room's ready.</p>
+      <a href="#book" class="btn btn-primary btn-magnetic">Book the Space</a>
+    </div>
+  </section>
+
+  <!-- ============ BOOK FORM ============ -->
+  <section id="book">
+    <div class="wrap book-form-wrap">
+      <div>
+        <p class="eyebrow">Booking</p>
+        <h2>Tell us about your show</h2>
+        <p>Fill this out and the booking team gets back within a couple of days. Touring act, local release, private event — all welcome.</p>
+      </div>
+      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <div class="field-group">
+          <label for="name">Name<span class="placeholder-tag">form isn't live yet</span></label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="field-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="field-group">
+          <label for="event-type">Event type</label>
+          <select id="event-type" name="event-type">
+            <option>Touring show</option>
+            <option>Local release show</option>
+            <option>Private event</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <label for="details">Tell us about it</label>
+          <textarea id="details" name="details" placeholder="Date range, expected crowd, anything else we should know"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send It</button>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="logo" href="index.html">THE <span class="logo-bolt">VOLT</span></a>
+        <p class="footer-tagline" style="margin-top:1rem;">A 1,200-cap live music hall built for sound. Concept demo — not a real venue.</p>
+      </div>
+      <div>
+        <p class="footer-heading">Site</p>
+        <nav class="footer-links">
+          <a href="#shows">Shows</a>
+          <a href="#venue">Venue</a>
+          <a href="#book">Book the Space</a>
+        </nav>
+      </div>
+      <div>
+        <p class="footer-heading">Contact</p>
+        <nav class="footer-links">
+          <a href="tel:+19125550142">(912) 555-0142 <span class="placeholder-tag">demo number</span></a>
+          <a href="mailto:booking@thevolt.example">booking@thevolt.example</a>
+        </nav>
+      </div>
+    </div>
+    <div class="demo-disclosure">
+      <strong>This is a concept demo,</strong> not a real business. It was built by <a href="https://www.swensondigital.co/" style="color: var(--volt);">Swenson Digital</a> to show what's possible when a site can go all-in on motion and interaction — canvas animation, a custom cursor, magnetic buttons, animated counters, and scroll-driven reveals, all with no page-load framework.
+    </div>
+    <div class="footer-bottom-row">
+      <p>&copy; <span id="year"></span> The Volt (concept). A Swenson Digital portfolio demo.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
