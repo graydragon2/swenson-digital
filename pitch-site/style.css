@@ -311,6 +311,9 @@ section { padding: clamp(2.75rem, 6vw, 5rem) 0; }
   gap: 2.5rem;
   align-items: center;
 }
+.hero-art {
+  will-change: transform;
+}
 .eyebrow {
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -342,8 +345,12 @@ section { padding: clamp(2.75rem, 6vw, 5rem) 0; }
 
 @media (min-width: 900px) {
   .hero-inner {
-    grid-template-columns: 1.1fr 0.9fr;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 1.5rem;
   }
+}
+@media (min-width: 1200px) {
+  .hero-art { margin-right: -2.5rem; }
 }
 
 /* ---------- Problem ---------- */
@@ -621,6 +628,66 @@ section { padding: clamp(2.75rem, 6vw, 5rem) 0; }
 }
 .step-card p { color: var(--ink-light); margin-bottom: 0; font-size: 0.95rem; }
 
+/* ---------- Recent work (real case study, not a fake testimonial grid) ---------- */
+.work-card {
+  margin-top: 2rem;
+  display: grid;
+  gap: 0;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s ease;
+}
+.work-card:hover { box-shadow: var(--shadow-md); }
+.work-card:focus-visible { outline: 2px solid var(--clay); outline-offset: 3px; }
+.work-shot {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+}
+.work-shot img {
+  width: 100%;
+  display: block;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.work-card:hover .work-shot img { transform: scale(1.02); }
+.work-body { padding: clamp(1.5rem, 4vw, 2.25rem); }
+.work-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--clay-dark);
+  margin-bottom: 0.5rem;
+}
+.work-body h3 { font-size: 1.4rem; margin-bottom: 0.5rem; }
+.work-body p { color: var(--ink-light); max-width: 60ch; }
+.work-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  font-weight: 600;
+  color: var(--pine-dark);
+  text-decoration: none;
+  border-bottom: 1.5px solid var(--gold);
+  padding-bottom: 0.1em;
+  transition: color 0.2s ease, gap 0.2s ease;
+}
+.work-link:hover { color: var(--clay); gap: 0.65em; }
+
+@media (min-width: 780px) {
+  .work-card { grid-template-columns: 1.2fr 1fr; align-items: stretch; }
+  .work-shot { border-bottom: none; border-right: 1px solid var(--border); }
+  .work-shot img { height: 100%; object-fit: cover; }
+  .work-body { display: flex; flex-direction: column; justify-content: center; }
+}
+
 /* ---------- Proof ---------- */
 .proof-grid { grid-template-columns: 1fr; }
 @media (min-width: 700px) { .proof-grid { grid-template-columns: repeat(3, 1fr); } }
@@ -697,6 +764,15 @@ section { padding: clamp(2.75rem, 6vw, 5rem) 0; }
   max-width: none;
 }
 .about-beliefs li { color: var(--ink); }
+.about-pull-quote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.2rem, 2.4vw, 1.45rem);
+  color: var(--pine-dark);
+  border-left: 3px solid var(--gold);
+  padding-left: 1.25rem;
+  margin: 1.75rem 0;
+}
 
 /* ---------- Contact ---------- */
 .contact { background: var(--cream-dark); }
@@ -749,20 +825,39 @@ section { padding: clamp(2.75rem, 6vw, 5rem) 0; }
 .site-footer {
   background: var(--pine-dark);
   color: var(--cream-dark);
-  padding: 2.25rem 0 1.75rem;
+  padding: clamp(2.75rem, 6vw, 3.75rem) 0 1.75rem;
   font-size: 0.9rem;
-}
-.footer-inner {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
 }
 .site-footer a { color: var(--cream); }
 
+.footer-brand-col .logo {
+  color: var(--white);
+  font-size: 1.25rem;
+  margin-bottom: 0.6rem;
+}
+.footer-brand-col .logo-mark path:first-child { fill: var(--cream); }
+.footer-tagline { color: rgba(250, 245, 234, 0.65); max-width: 32ch; }
+
+.footer-grid {
+  display: grid;
+  gap: 2rem;
+  margin-bottom: 2.25rem;
+}
+@media (min-width: 640px) {
+  .footer-grid { grid-template-columns: 1.3fr 1fr 1fr; }
+}
+.footer-grid h3 {
+  color: var(--white);
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: 0.9rem;
+}
 .footer-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.25rem;
+  display: grid;
+  gap: 0.6rem;
 }
 .footer-links a { text-decoration: none; font-weight: 500; }
 .footer-links a:hover { color: var(--gold); }
@@ -772,8 +867,32 @@ section { padding: clamp(2.75rem, 6vw, 5rem) 0; }
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 0.75rem;
-  padding-top: 1.1rem;
+  padding-top: 1.5rem;
   border-top: 1px solid rgba(255, 255, 255, 0.15);
+  color: rgba(250, 245, 234, 0.6);
+  font-size: 0.82rem;
+}
+
+/* ---------- Sticky mobile CTA bar ---------- */
+.mobile-cta-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 70;
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom, 0px));
+  background: var(--white);
+  border-top: 1px solid var(--border);
+  box-shadow: 0 -8px 24px rgba(22, 41, 30, 0.12);
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+.mobile-cta-bar.show { transform: translateY(0); }
+.mobile-cta-bar .btn { flex: 1; justify-content: center; text-align: center; padding-top: 0.8rem; padding-bottom: 0.8rem; }
+@media (min-width: 860px) {
+  .mobile-cta-bar { display: none; }
 }
 
 /* ---------- Scroll reveals ----------
@@ -790,6 +909,7 @@ section { padding: clamp(2.75rem, 6vw, 5rem) 0; }
 .js-motion .price-card,
 .js-motion .faq-item,
 .js-motion .social-mockup,
+.js-motion .work-card,
 .js-motion .problem-list li {
   opacity: 0;
   transform: translateY(18px);
@@ -801,6 +921,7 @@ section { padding: clamp(2.75rem, 6vw, 5rem) 0; }
 .price-card,
 .faq-item,
 .social-mockup,
+.work-card,
 .problem-list li {
   /* Long, decelerating ease — motion should settle, not bounce. */
   transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
@@ -867,6 +988,7 @@ section { padding: clamp(2.75rem, 6vw, 5rem) 0; }
   .price-card,
   .faq-item,
   .social-mockup,
+  .work-card,
   .problem-list li,
   .hero-copy > *,
   .hero-art {
