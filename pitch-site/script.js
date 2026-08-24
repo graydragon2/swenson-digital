@@ -116,11 +116,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Magnetic tilt on the "Recent Work" card — a subtle 3D lean toward the
+  // Magnetic tilt on each "Recent Work" card — a subtle 3D lean toward the
   // cursor. The kind of detail that's easy to skip and easy to notice.
   if (motionOn && canHover) {
-    const workCard = document.querySelector('.work-card');
-    if (workCard) {
+    document.querySelectorAll('.work-card').forEach((workCard) => {
       workCard.addEventListener('mousemove', (e) => {
         const rect = workCard.getBoundingClientRect();
         const px = (e.clientX - rect.left) / rect.width - 0.5;
@@ -130,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
       workCard.addEventListener('mouseleave', () => {
         workCard.style.transform = '';
       });
-    }
+    });
   }
 
   // Sticky "Get a Free Site Review" bar for small screens — appears once
