@@ -4,7 +4,7 @@
 // where <html> has .js-motion (set by the inline snippet in <head> — see
 // there for why). Mirrors the selector list in style.css's reveal rules;
 // keep the two in sync if you add a new element type.
-const REVEAL_SELECTOR = '.service-card, .service-row, .step-card, .proof-card, .price-card, .faq-item, .social-mockup, .work-card, .problem-list li';
+const REVEAL_SELECTOR = '.service-row, .step-card, .proof-card, .price-card, .faq-item, .social-mockup, .work-card, .problem-list li';
 
 document.addEventListener('DOMContentLoaded', () => {
   const motionOn = document.documentElement.classList.contains('js-motion');

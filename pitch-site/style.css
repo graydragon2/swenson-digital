@@ -12,6 +12,10 @@
   --clay: #c1622d;
   --clay-dark: #a34f22;
   --gold: #c99a3e;
+  /* Same gold family, darkened for use as text on the cream background —
+     the base --gold only clears WCAG contrast on dark backgrounds or as a
+     small badge fill; large numerals set directly on cream need this. */
+  --gold-text: #97742e;
   --ink: #262620;
   --ink-light: #55534a;
   --white: #fffdf8;
@@ -447,43 +451,6 @@ body.hero-page .site-header.nav-open .primary-nav a:not(.nav-cta) {
   max-width: 60ch;
 }
 
-/* ---------- Card grid / services ---------- */
-.card-grid {
-  display: grid;
-  gap: 1.5rem;
-  margin-top: 2rem;
-  grid-template-columns: 1fr;
-}
-@media (min-width: 700px) {
-  .card-grid { grid-template-columns: repeat(3, 1fr); }
-}
-
-.service-card {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1.75rem;
-  box-shadow: var(--shadow-sm);
-}
-.icon-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background: var(--cream-dark);
-  color: var(--pine);
-  margin-bottom: 1rem;
-  transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
-}
-.service-card:hover .icon-badge {
-  background: var(--pine);
-  color: var(--white);
-  transform: scale(1.08) rotate(-4deg);
-}
-.service-card p { color: var(--ink-light); margin-bottom: 0; }
-
 /* ---------- Services list (editorial numeral rows, no icon badges) ---------- */
 .service-list {
   margin-top: 2rem;
@@ -503,7 +470,7 @@ body.hero-page .site-header.nav-open .primary-nav a:not(.nav-cta) {
   font-weight: 600;
   font-style: italic;
   font-size: clamp(2rem, 5vw, 2.75rem);
-  color: var(--gold);
+  color: var(--gold-text);
   line-height: 1;
 }
 .service-row-body h3 { margin-bottom: 0.35rem; }
@@ -710,7 +677,7 @@ body.hero-page .site-header.nav-open .primary-nav a:not(.nav-cta) {
   font-style: italic;
   font-weight: 600;
   font-size: 2.25rem;
-  color: var(--gold);
+  color: var(--gold-text);
   line-height: 1;
   margin-bottom: 0.75rem;
   transition: color 0.2s ease;
@@ -995,7 +962,6 @@ body.hero-page .site-header.nav-open .primary-nav a:not(.nav-cta) {
 
    NOTE: the selector list below is mirrored in script.js (REVEAL_SELECTOR).
    Keep the two in sync if you add a new element type here. */
-.js-motion .service-card,
 .js-motion .service-row,
 .js-motion .step-card,
 .js-motion .proof-card,
@@ -1008,7 +974,6 @@ body.hero-page .site-header.nav-open .primary-nav a:not(.nav-cta) {
   transform: translateY(18px);
 }
 
-.service-card,
 .service-row,
 .step-card,
 .proof-card,
@@ -1066,16 +1031,11 @@ body.hero-page .site-header.nav-open .primary-nav a:not(.nav-cta) {
 }
 
 /* Card hover lift — subtle, and only where the whole card is a unit. */
-.service-card,
 .step-card,
 .price-card {
   transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
               transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
               box-shadow 0.3s ease;
-}
-.service-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 14px 32px rgba(31, 61, 46, 0.12);
 }
 .step-card:hover .step-num { color: var(--clay); }
 
@@ -1084,7 +1044,6 @@ body.hero-page .site-header.nav-open .primary-nav a:not(.nav-cta) {
   .btn { transition: none; }
   /* Belt and braces: .js-motion is never set under reduced motion, but if a
      browser reports the preference late, make sure nothing animates or hides. */
-  .service-card,
   .service-row,
   .step-card,
   .proof-card,
