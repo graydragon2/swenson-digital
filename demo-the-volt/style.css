@@ -733,6 +733,11 @@ body.cursor-none, body.cursor-none a, body.cursor-none button {
   border: 1px solid var(--line);
   border-radius: 8px;
   cursor: pointer;
+  /* The open .primary-nav panel is position:fixed and covers the header
+     area too, so without this it paints over the toggle button (later in
+     DOM order) and the button becomes unclickable to close the menu. */
+  position: relative;
+  z-index: 210;
 }
 .nav-toggle span {
   display: block;
