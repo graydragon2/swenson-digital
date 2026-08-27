@@ -688,6 +688,7 @@ body.hero-page .site-header.nav-open .primary-nav a:not(.nav-cta) {
 .work-card {
   margin-top: 2rem;
   display: grid;
+  grid-template-columns: 1fr;
   gap: 0;
   background: var(--white);
   border: 1px solid var(--border);
@@ -709,9 +710,21 @@ body.hero-page .site-header.nav-open .primary-nav a:not(.nav-cta) {
   position: relative;
   overflow: hidden;
   border-bottom: 1px solid var(--border);
+  /* Grid items default to min-width:auto (can refuse to shrink below a
+     child's intrinsic content size); explicit here defensively, though the
+     real mobile image bug turned out to be in .work-shot img below. */
+  min-width: 0;
 }
 .work-shot img {
   width: 100%;
+  /* Without this, the width/height HTML attributes (added for CLS) map to
+     a presentational height:806px hint that this rule's width:100% doesn't
+     touch — so instead of scaling proportionally, the image was forced to
+     a literal 806px-tall box on any layout narrower than 1200px (i.e. every
+     mobile view), stretching it and pushing the card's text far offscreen.
+     height:auto lets the aspect-ratio (also derived from those attributes)
+     compute the height correctly instead. */
+  height: auto;
   display: block;
   transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
