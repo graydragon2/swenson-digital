@@ -9,6 +9,13 @@ name: Live site check
 #
 # TODO: update SITE_URL below once a custom domain is attached — currently
 # points at the Cloudflare Workers preview URL.
+#
+# NOTE: the Cloudflare Worker project itself is still named
+# "live-oak-digital" — only the GitHub repo and site content were renamed
+# to Swenson Digital, the Worker was not. Don't "fix" this URL back to
+# swenson-digital.graydragon2.workers.dev without first confirming the
+# Worker has actually been renamed on Cloudflare's side (a prior attempt
+# to do exactly that is why this was broken for 18+ days straight).
 
 on:
   schedule:
@@ -16,7 +23,7 @@ on:
   workflow_dispatch: {}
 
 env:
-  SITE_URL: https://swenson-digital.graydragon2.workers.dev/
+  SITE_URL: https://live-oak-digital.graydragon2.workers.dev/
 
 jobs:
   check:
